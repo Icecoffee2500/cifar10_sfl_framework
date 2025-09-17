@@ -1,0 +1,30 @@
+[2025-09-17 20:05:50,033][__main__][INFO] - GPU: NVIDIA GeForce RTX 3080
+[2025-09-17 20:05:50,034][__main__][INFO] - [FL ResNet18 on CIFAR10] Start ------------------------------
+[2025-09-17 20:05:50,034][datasets.fl_dataset][INFO] - cfg_transforms:
+- padding: 4
+  size: 32
+  type: RandomCrop
+- type: RandomHorizontalFlip
+- type: ToTensor
+- mean:
+  - 0.4914
+  - 0.4822
+  - 0.4465
+  std:
+  - 0.2023
+  - 0.1994
+  - 0.201
+  type: Normalize
+
+[2025-09-17 20:05:50,035][datasets.fl_dataset][INFO] - cfg_transforms:
+- type: ToTensor
+- mean:
+  - 0.4914
+  - 0.4822
+  - 0.4465
+  std:
+  - 0.2023
+  - 0.1994
+  - 0.201
+  type: Normalize
+

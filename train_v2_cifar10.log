@@ -1,0 +1,93 @@
+09/17/2025 22:56:09 INFO	[utils.utils]	🌱 Setting random seed to 1234 for reproducibility
+09/17/2025 22:56:09 INFO	[utils.utils]	✅ Random seed fixed for reproducible results
+09/17/2025 22:56:09 INFO	[__main__]	GPU: NVIDIA GeForce RTX 3080
+09/17/2025 22:56:09 INFO	[__main__]	Start: SFL-V2 ResNet18 on CIFAR10
+09/17/2025 22:56:11 INFO	[__main__]	cifar10 train dataset(label) length: 50000
+09/17/2025 22:56:11 INFO	[__main__]	cifar10 train dataset(label) unique: [0 1 2 3 4 5 6 7 8 9]
+09/17/2025 22:56:11 INFO	[__main__]	dict_users with dirichlet distribution
+09/17/2025 22:56:11 INFO	[__main__]			dict_users[0] length: 412
+09/17/2025 22:56:11 INFO	[__main__]			dict_users[1] length: 10751
+09/17/2025 22:56:11 INFO	[__main__]			dict_users[2] length: 1003
+09/17/2025 22:56:11 INFO	[__main__]			dict_users[3] length: 7139
+09/17/2025 22:56:11 INFO	[__main__]			dict_users[4] length: 14595
+09/17/2025 22:56:11 INFO	[__main__]			dict_users[5] length: 3628
+09/17/2025 22:56:11 INFO	[__main__]			dict_users[6] length: 6983
+09/17/2025 22:56:11 INFO	[__main__]			dict_users[7] length: 1809
+09/17/2025 22:56:11 INFO	[__main__]			dict_users[8] length: 2741
+09/17/2025 22:56:11 INFO	[__main__]			dict_users[9] length: 939
+09/17/2025 22:56:11 INFO	[__main__]	total_items_count: 50000
+09/17/2025 22:56:13 INFO	[__main__]	Client5 Train => Local Epoch: 0 	Acc: 89.344 	Loss: 0.5867
+09/17/2025 22:56:14 INFO	[__main__]	Client5 Train => Local Epoch: 1 	Acc: 94.024 	Loss: 0.2426
+09/17/2025 22:56:15 INFO	[__main__]	Client5 Train => Local Epoch: 2 	Acc: 94.913 	Loss: 0.2081
+09/17/2025 22:56:16 INFO	[__main__]	Client5 Train => Local Epoch: 3 	Acc: 94.989 	Loss: 0.1894
+09/17/2025 22:56:17 INFO	[__main__]	Client5 Train => Local Epoch: 4 	Acc: 95.530 	Loss: 0.1794
+09/17/2025 22:56:17 INFO	[__main__]	Client5 Test =>                   	Acc: 9.300 	Loss: 4.5747
+09/17/2025 22:56:18 INFO	[__main__]	Client7 Train => Local Epoch: 0 	Acc: 47.650 	Loss: 1.9778
+09/17/2025 22:56:18 INFO	[__main__]	Client7 Train => Local Epoch: 1 	Acc: 59.804 	Loss: 1.1337
+09/17/2025 22:56:19 INFO	[__main__]	Client7 Train => Local Epoch: 2 	Acc: 64.133 	Loss: 0.9991
+09/17/2025 22:56:19 INFO	[__main__]	Client7 Train => Local Epoch: 3 	Acc: 65.070 	Loss: 0.9159
+09/17/2025 22:56:20 INFO	[__main__]	Client7 Train => Local Epoch: 4 	Acc: 67.362 	Loss: 0.8603
+09/17/2025 22:56:20 INFO	[__main__]	Client7 Test =>                   	Acc: 9.800 	Loss: 4.5327
+09/17/2025 22:56:23 INFO	[__main__]	Client1 Train => Local Epoch: 0 	Acc: 61.818 	Loss: 0.9733
+09/17/2025 22:56:26 INFO	[__main__]	Client1 Train => Local Epoch: 1 	Acc: 74.058 	Loss: 0.6514
+09/17/2025 22:56:29 INFO	[__main__]	Client1 Train => Local Epoch: 2 	Acc: 79.509 	Loss: 0.5315
+09/17/2025 22:56:31 INFO	[__main__]	Client1 Train => Local Epoch: 3 	Acc: 82.932 	Loss: 0.4552
+09/17/2025 22:56:34 INFO	[__main__]	Client1 Train => Local Epoch: 4 	Acc: 85.276 	Loss: 0.3934
+09/17/2025 22:56:35 INFO	[__main__]	Client1 Test =>                   	Acc: 12.900 	Loss: 4.4997
+09/17/2025 22:56:35 INFO	[__main__]	Client2 Train => Local Epoch: 0 	Acc: 54.988 	Loss: 2.1430
+09/17/2025 22:56:35 INFO	[__main__]	Client2 Train => Local Epoch: 1 	Acc: 75.869 	Loss: 0.8200
+09/17/2025 22:56:35 INFO	[__main__]	Client2 Train => Local Epoch: 2 	Acc: 79.540 	Loss: 0.6805
+09/17/2025 22:56:36 INFO	[__main__]	Client2 Train => Local Epoch: 3 	Acc: 81.824 	Loss: 0.5991
+09/17/2025 22:56:36 INFO	[__main__]	Client2 Train => Local Epoch: 4 	Acc: 83.756 	Loss: 0.5407
+09/17/2025 22:56:36 INFO	[__main__]	Client2 Test =>                   	Acc: 8.300 	Loss: 4.4982
+09/17/2025 22:56:38 INFO	[__main__]	Client3 Train => Local Epoch: 0 	Acc: 67.115 	Loss: 0.9757
+09/17/2025 22:56:40 INFO	[__main__]	Client3 Train => Local Epoch: 1 	Acc: 78.394 	Loss: 0.6231
+09/17/2025 22:56:42 INFO	[__main__]	Client3 Train => Local Epoch: 2 	Acc: 81.878 	Loss: 0.5410
+09/17/2025 22:56:44 INFO	[__main__]	Client3 Train => Local Epoch: 3 	Acc: 83.634 	Loss: 0.4826
+09/17/2025 22:56:46 INFO	[__main__]	Client3 Train => Local Epoch: 4 	Acc: 84.593 	Loss: 0.4488
+09/17/2025 22:56:46 INFO	[__main__]	Client3 Test =>                   	Acc: 9.100 	Loss: 4.4868
+09/17/2025 22:56:46 INFO	[__main__]	Client9 Train => Local Epoch: 0 	Acc: 51.201 	Loss: 2.0054
+09/17/2025 22:56:46 INFO	[__main__]	Client9 Train => Local Epoch: 1 	Acc: 77.353 	Loss: 0.6874
+09/17/2025 22:56:47 INFO	[__main__]	Client9 Train => Local Epoch: 2 	Acc: 80.582 	Loss: 0.5342
+09/17/2025 22:56:47 INFO	[__main__]	Client9 Train => Local Epoch: 3 	Acc: 81.750 	Loss: 0.4559
+09/17/2025 22:56:47 INFO	[__main__]	Client9 Train => Local Epoch: 4 	Acc: 83.323 	Loss: 0.4301
+09/17/2025 22:56:47 INFO	[__main__]	Client9 Test =>                   	Acc: 10.200 	Loss: 4.4754
+09/17/2025 22:56:51 INFO	[__main__]	Client4 Train => Local Epoch: 0 	Acc: 62.683 	Loss: 1.0443
+09/17/2025 22:56:55 INFO	[__main__]	Client4 Train => Local Epoch: 1 	Acc: 72.871 	Loss: 0.7471
+09/17/2025 22:56:59 INFO	[__main__]	Client4 Train => Local Epoch: 2 	Acc: 77.885 	Loss: 0.6364
+09/17/2025 22:57:03 INFO	[__main__]	Client4 Train => Local Epoch: 3 	Acc: 81.519 	Loss: 0.5306
+09/17/2025 22:57:07 INFO	[__main__]	Client4 Train => Local Epoch: 4 	Acc: 84.121 	Loss: 0.4578
+09/17/2025 22:57:07 INFO	[__main__]	Client4 Test =>                   	Acc: 10.500 	Loss: 4.4656
+09/17/2025 22:57:09 INFO	[__main__]	Client6 Train => Local Epoch: 0 	Acc: 61.394 	Loss: 1.1867
+09/17/2025 22:57:11 INFO	[__main__]	Client6 Train => Local Epoch: 1 	Acc: 72.394 	Loss: 0.8059
+09/17/2025 22:57:13 INFO	[__main__]	Client6 Train => Local Epoch: 2 	Acc: 74.820 	Loss: 0.7067
+09/17/2025 22:57:14 INFO	[__main__]	Client6 Train => Local Epoch: 3 	Acc: 76.645 	Loss: 0.6562
+09/17/2025 22:57:16 INFO	[__main__]	Client6 Train => Local Epoch: 4 	Acc: 80.266 	Loss: 0.5750
+09/17/2025 22:57:17 INFO	[__main__]	Client6 Test =>                   	Acc: 12.800 	Loss: 4.4542
+09/17/2025 22:57:17 INFO	[__main__]	Client8 Train => Local Epoch: 0 	Acc: 70.464 	Loss: 0.9803
+09/17/2025 22:57:18 INFO	[__main__]	Client8 Train => Local Epoch: 1 	Acc: 82.887 	Loss: 0.5154
+09/17/2025 22:57:19 INFO	[__main__]	Client8 Train => Local Epoch: 2 	Acc: 85.074 	Loss: 0.4486
+09/17/2025 22:57:19 INFO	[__main__]	Client8 Train => Local Epoch: 3 	Acc: 86.589 	Loss: 0.4081
+09/17/2025 22:57:20 INFO	[__main__]	Client8 Train => Local Epoch: 4 	Acc: 87.140 	Loss: 0.3849
+09/17/2025 22:57:20 INFO	[__main__]	Client8 Test =>                   	Acc: 13.500 	Loss: 4.4483
+09/17/2025 22:57:20 INFO	[__main__]	Client0 Train => Local Epoch: 0 	Acc: 49.805 	Loss: 2.0493
+09/17/2025 22:57:21 INFO	[__main__]	Client0 Train => Local Epoch: 1 	Acc: 99.414 	Loss: 0.0699
+09/17/2025 22:57:21 INFO	[__main__]	Client0 Train => Local Epoch: 2 	Acc: 99.414 	Loss: 0.0566
+09/17/2025 22:57:21 INFO	[__main__]	Client0 Train => Local Epoch: 3 	Acc: 99.414 	Loss: 0.0485
+09/17/2025 22:57:21 INFO	[__main__]	Client0 Train => Local Epoch: 4 	Acc: 99.414 	Loss: 0.0460
+09/17/2025 22:57:21 INFO	[__main__]	Client0 Test =>                   	Acc: 11.500 	Loss: 4.4543
+09/17/2025 22:57:21 INFO	[__main__]	====================== SERVER V1==========================
+09/17/2025 22:57:21 INFO	[__main__]	 Train: Round   0, Avg Accuracy 85.078 | Avg Loss 0.432
+09/17/2025 22:57:21 INFO	[__main__]	 Test: Round   0, Avg Accuracy 10.790 | Avg Loss 4.489
+09/17/2025 22:57:21 INFO	[__main__]	==========================================================
+09/17/2025 22:57:21 INFO	[__main__]	------------------------------------------------------------
+09/17/2025 22:57:21 INFO	[__main__]	------ Fed Server: Federation process at Client-Side -------
+09/17/2025 22:57:21 INFO	[__main__]	------------------------------------------------------------
+09/17/2025 22:57:22 INFO	[__main__]	Client7 Train => Local Epoch: 0 	Acc: 58.922 	Loss: 1.1385
+09/17/2025 22:57:22 INFO	[__main__]	Client7 Train => Local Epoch: 1 	Acc: 65.515 	Loss: 0.9500
+09/17/2025 22:57:23 INFO	[__main__]	Client7 Train => Local Epoch: 2 	Acc: 67.022 	Loss: 0.8649
+09/17/2025 22:57:23 INFO	[__main__]	Client7 Train => Local Epoch: 3 	Acc: 64.960 	Loss: 0.8656
+09/17/2025 22:57:24 INFO	[__main__]	Client7 Train => Local Epoch: 4 	Acc: 70.175 	Loss: 0.7827
+09/17/2025 22:57:24 INFO	[__main__]	Client7 Test =>                   	Acc: 9.800 	Loss: 4.8345
+09/17/2025 22:57:28 INFO	[__main__]	Client4 Train => Local Epoch: 0 	Acc: 69.656 	Loss: 0.8659
+09/17/2025 22:57:32 INFO	[__main__]	Client4 Train => Local Epoch: 1 	Acc: 78.415 	Loss: 0.6245

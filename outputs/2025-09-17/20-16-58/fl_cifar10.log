@@ -1,0 +1,21 @@
+[2025-09-17 20:16:59,011][__main__][INFO] - GPU: NVIDIA GeForce RTX 3080
+[2025-09-17 20:16:59,011][__main__][INFO] - FL ResNet18 on CIFAR10 Start ------------------------------
+[2025-09-17 20:16:59,916][__main__][INFO] - dict_users with dirichlet distribution
+[2025-09-17 20:16:59,916][__main__][INFO] - 		dict_users[0] length: 8920
+[2025-09-17 20:16:59,916][__main__][INFO] - 		dict_users[1] length: 5929
+[2025-09-17 20:16:59,916][__main__][INFO] - 		dict_users[2] length: 1384
+[2025-09-17 20:16:59,916][__main__][INFO] - 		dict_users[3] length: 5749
+[2025-09-17 20:16:59,916][__main__][INFO] - 		dict_users[4] length: 3899
+[2025-09-17 20:16:59,916][__main__][INFO] - 		dict_users[5] length: 4493
+[2025-09-17 20:16:59,916][__main__][INFO] - 		dict_users[6] length: 2122
+[2025-09-17 20:16:59,916][__main__][INFO] - 		dict_users[7] length: 4612
+[2025-09-17 20:16:59,916][__main__][INFO] - 		dict_users[8] length: 7607
+[2025-09-17 20:16:59,916][__main__][INFO] - 		dict_users[9] length: 5285
+[2025-09-17 20:16:59,917][__main__][INFO] - total_items_count: 50000
+[2025-09-17 20:19:06,287][__main__][INFO] - ------------------------------------------------
+[2025-09-17 20:19:06,287][__main__][INFO] - ------ Federation process at Server-Side -------
+[2025-09-17 20:19:06,287][__main__][INFO] - ------------------------------------------------
+[2025-09-17 20:19:06,302][__main__][INFO] - ------------------- SERVER ----------------------------------------------
+[2025-09-17 20:19:06,302][__main__][INFO] - Train: Round   0, Avg Accuracy 77.347 | Avg Loss 0.680
+[2025-09-17 20:19:06,302][__main__][INFO] - Test:  Round   0, Avg Accuracy 11.400 | Avg Loss 4.586
+[2025-09-17 20:19:06,302][__main__][INFO] - -------------------------------------------------------------------------

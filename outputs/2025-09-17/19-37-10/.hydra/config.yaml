@@ -1,0 +1,46 @@
+device: 0
+server:
+  num_users: 10
+  frac: 1
+  global_epochs: 200
+client:
+  train:
+    local_epochs: 5
+    batch_size: 128
+    shuffle: true
+  test:
+    batch_size: 100
+    shuffle: true
+  optimizer:
+    lr: 0.01
+    momentum: 0.9
+    weight_decay: 0.0005
+dataset:
+  train:
+    transforms:
+    - type: RandomCrop
+      size: 32
+      padding: 4
+    - type: RandomHorizontalFlip
+    - type: ToTensor
+    - type: Normalize
+      mean:
+      - 0.4914
+      - 0.4822
+      - 0.4465
+      std:
+      - 0.2023
+      - 0.1994
+      - 0.201
+  test:
+    transforms:
+    - type: ToTensor
+    - type: Normalize
+      mean:
+      - 0.4914
+      - 0.4822
+      - 0.4465
+      std:
+      - 0.2023
+      - 0.1994
+      - 0.201

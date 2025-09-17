@@ -1,0 +1,31 @@
+[2025-09-17 19:36:41,190][__main__][WARNING] - Start Federated Learning
+[2025-09-17 19:36:41,251][datasets.fl_dataset][INFO] - create_transforms
+[2025-09-17 19:36:41,252][datasets.fl_dataset][INFO] - cfg_transforms:
+- padding: 4
+  size: 32
+  type: RandomCrop
+- type: RandomHorizontalFlip
+- type: ToTensor
+- mean:
+  - 0.4914
+  - 0.4822
+  - 0.4465
+  std:
+  - 0.2023
+  - 0.1994
+  - 0.201
+  type: Normalize
+
+[2025-09-17 19:36:41,252][datasets.fl_dataset][INFO] - create_transforms
+[2025-09-17 19:36:41,253][datasets.fl_dataset][INFO] - cfg_transforms:
+- type: ToTensor
+- mean:
+  - 0.4914
+  - 0.4822
+  - 0.4465
+  std:
+  - 0.2023
+  - 0.1994
+  - 0.201
+  type: Normalize
+

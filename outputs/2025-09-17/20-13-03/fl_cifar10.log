@@ -1,0 +1,13 @@
+[2025-09-17 20:13:03,183][__main__][INFO] - GPU: NVIDIA GeForce RTX 3080
+[2025-09-17 20:13:03,183][__main__][INFO] - FL ResNet18 on CIFAR10 Start ------------------------------
+[2025-09-17 20:13:04,089][__main__][INFO] - dict_users[0] length: 8920
+[2025-09-17 20:13:04,089][__main__][INFO] - dict_users[1] length: 5929
+[2025-09-17 20:13:04,089][__main__][INFO] - dict_users[2] length: 1384
+[2025-09-17 20:13:04,089][__main__][INFO] - dict_users[3] length: 5749
+[2025-09-17 20:13:04,089][__main__][INFO] - dict_users[4] length: 3899
+[2025-09-17 20:13:04,089][__main__][INFO] - dict_users[5] length: 4493
+[2025-09-17 20:13:04,089][__main__][INFO] - dict_users[6] length: 2122
+[2025-09-17 20:13:04,089][__main__][INFO] - dict_users[7] length: 4612
+[2025-09-17 20:13:04,089][__main__][INFO] - dict_users[8] length: 7607
+[2025-09-17 20:13:04,089][__main__][INFO] - dict_users[9] length: 5285
+[2025-09-17 20:13:04,089][__main__][INFO] - total_items_count: 50000
