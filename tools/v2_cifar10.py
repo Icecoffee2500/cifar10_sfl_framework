@@ -50,8 +50,8 @@ if torch.cuda.is_available():
 # print(f"---------{program}----------")              # this is to identify the program in the slurm outputs files
 prGreen("Start: SFL-V2 ResNet18 on CIFAR10", logger=logger)
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-# device = torch.device(f'cuda:3}' if torch.cuda.is_available() else 'cpu')
+# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+device = torch.device(f'cuda:3' if torch.cuda.is_available() else 'cpu')
 
 #===================================================================
 # No. of users

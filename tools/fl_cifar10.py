@@ -177,7 +177,6 @@ def main(cfg: DictConfig) -> None:
         prGreen(f"Train: Round {global_epoch:3d}, Avg Accuracy {acc_avg_train:.3f} | Avg Loss {loss_avg_train:.3f}", logger=logger)
         prGreen(f"Test:  Round {global_epoch:3d}, Avg Accuracy {acc_avg_test:.3f} | Avg Loss {loss_avg_test:.3f}", logger=logger)
         prGreen('-------------------------------------------------------------------------', logger=logger)
-        break
 
     prRed("Training and Evaluation completed!", logger=logger)    
 
