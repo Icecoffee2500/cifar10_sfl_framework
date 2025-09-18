@@ -99,8 +99,8 @@ class SLServer:
                     #print(idx_collect)
             
             # This is to check if all users are served for one round --------------------
-            if len(self.idx_collect) == self.num_users*frac:
-                self.fed_check = True                                                  # for evaluate_server function  - to check fed check has hitted
+            if len(self.idx_collect) == self.num_users * frac:
+                self.fed_check = True # for evaluate_server function  - to check fed check has hitted
                 # all users served for one round ------------------------- output print and update is done in evaluate_server()
                 # for nicer display 
                             
@@ -176,5 +176,12 @@ class SLServer:
                     logger.info(' Train: Round {:3d}, Avg Accuracy {:.3f} | Avg Loss {:.3f}'.format(ell, self.acc_avg_all_user_train, self.loss_avg_all_user_train))
                     logger.info(' Test: Round {:3d}, Avg Accuracy {:.3f} | Avg Loss {:.3f}'.format(ell, acc_avg_all_user, loss_avg_all_user))
                     logger.info("==========================================================")
+
+                    return {
+                        "train/acc_avg": self.acc_avg_all_user_train,
+                        "train/loss_avg": self.loss_avg_all_user_train,
+                        "test/acc_avg": acc_avg_all_user,
+                        "test/loss_avg": loss_avg_all_user
+                    }
             
-        return 
+        return None

@@ -1,103 +1,292 @@
-09/17/2025 22:37:40 INFO	[utils.utils]	🌱 Setting random seed to 1234 for reproducibility
-09/17/2025 22:37:40 INFO	[utils.utils]	✅ Random seed fixed for reproducible results
-09/17/2025 22:37:40 INFO	[__main__]	GPU: NVIDIA GeForce RTX 3080
-09/17/2025 22:37:40 INFO	[__main__]	Start: SL ResNet18 on CIFAR10
-09/17/2025 22:37:42 INFO	[__main__]	cifar10 train dataset(label) length: 50000
-09/17/2025 22:37:42 INFO	[__main__]	cifar10 train dataset(label) unique: [0 1 2 3 4 5 6 7 8 9]
-09/17/2025 22:37:42 INFO	[__main__]	dict_users with dirichlet distribution
-09/17/2025 22:37:42 INFO	[__main__]			dict_users[0] length: 412
-09/17/2025 22:37:42 INFO	[__main__]			dict_users[1] length: 10751
-09/17/2025 22:37:42 INFO	[__main__]			dict_users[2] length: 1003
-09/17/2025 22:37:42 INFO	[__main__]			dict_users[3] length: 7139
-09/17/2025 22:37:42 INFO	[__main__]			dict_users[4] length: 14595
-09/17/2025 22:37:42 INFO	[__main__]			dict_users[5] length: 3628
-09/17/2025 22:37:42 INFO	[__main__]			dict_users[6] length: 6983
-09/17/2025 22:37:42 INFO	[__main__]			dict_users[7] length: 1809
-09/17/2025 22:37:42 INFO	[__main__]			dict_users[8] length: 2741
-09/17/2025 22:37:42 INFO	[__main__]			dict_users[9] length: 939
-09/17/2025 22:37:42 INFO	[__main__]	total_items_count: 50000
-09/17/2025 22:37:44 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 0 	Acc: 89.344 	Loss: 0.5867
-09/17/2025 22:37:45 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 1 	Acc: 94.024 	Loss: 0.2426
-09/17/2025 22:37:46 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 2 	Acc: 94.913 	Loss: 0.2081
-09/17/2025 22:37:47 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 3 	Acc: 94.989 	Loss: 0.1894
-09/17/2025 22:37:48 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 4 	Acc: 95.530 	Loss: 0.1794
-09/17/2025 22:37:48 INFO	[trainers.sl_server]	Client5 Test =>                   	Acc: 9.300 	Loss: 4.5747
-09/17/2025 22:37:48 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 0 	Acc: 51.710 	Loss: 1.8852
-09/17/2025 22:37:49 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 1 	Acc: 62.616 	Loss: 1.0207
-09/17/2025 22:37:49 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 2 	Acc: 64.761 	Loss: 0.9480
-09/17/2025 22:37:50 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 3 	Acc: 66.186 	Loss: 0.8547
-09/17/2025 22:37:50 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 4 	Acc: 69.026 	Loss: 0.7958
-09/17/2025 22:37:50 INFO	[trainers.sl_server]	Client7 Test =>                   	Acc: 23.400 	Loss: 3.5887
-09/17/2025 22:37:53 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 0 	Acc: 68.134 	Loss: 0.8549
-09/17/2025 22:37:56 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 1 	Acc: 75.797 	Loss: 0.6047
-09/17/2025 22:37:59 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 2 	Acc: 80.412 	Loss: 0.5142
-09/17/2025 22:38:02 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 3 	Acc: 83.741 	Loss: 0.4367
-09/17/2025 22:38:05 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 4 	Acc: 86.141 	Loss: 0.3771
-09/17/2025 22:38:05 INFO	[trainers.sl_server]	Client1 Test =>                   	Acc: 23.400 	Loss: 4.0285
-09/17/2025 22:38:05 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 0 	Acc: 67.543 	Loss: 1.9168
-09/17/2025 22:38:05 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 1 	Acc: 86.491 	Loss: 0.5378
-09/17/2025 22:38:06 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 2 	Acc: 87.486 	Loss: 0.4340
-09/17/2025 22:38:06 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 3 	Acc: 88.013 	Loss: 0.4185
-09/17/2025 22:38:06 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 4 	Acc: 90.317 	Loss: 0.3508
-09/17/2025 22:38:06 INFO	[trainers.sl_server]	Client2 Test =>                   	Acc: 29.000 	Loss: 3.4670
-09/17/2025 22:38:08 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 0 	Acc: 76.493 	Loss: 0.7587
-09/17/2025 22:38:10 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 1 	Acc: 83.861 	Loss: 0.4657
-09/17/2025 22:38:12 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 2 	Acc: 86.123 	Loss: 0.4086
-09/17/2025 22:38:14 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 3 	Acc: 87.788 	Loss: 0.3604
-09/17/2025 22:38:16 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 4 	Acc: 88.876 	Loss: 0.3297
-09/17/2025 22:38:16 INFO	[trainers.sl_server]	Client3 Test =>                   	Acc: 17.400 	Loss: 3.8826
-09/17/2025 22:38:16 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 0 	Acc: 52.271 	Loss: 2.4014
-09/17/2025 22:38:16 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 1 	Acc: 88.781 	Loss: 0.3118
-09/17/2025 22:38:17 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 2 	Acc: 92.680 	Loss: 0.2034
-09/17/2025 22:38:17 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 3 	Acc: 94.338 	Loss: 0.1656
-09/17/2025 22:38:17 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 4 	Acc: 94.731 	Loss: 0.1593
-09/17/2025 22:38:17 INFO	[trainers.sl_server]	Client9 Test =>                   	Acc: 30.200 	Loss: 2.6557
-09/17/2025 22:38:21 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 0 	Acc: 78.236 	Loss: 0.6834
-09/17/2025 22:38:25 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 1 	Acc: 82.862 	Loss: 0.4934
-09/17/2025 22:38:29 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 2 	Acc: 86.424 	Loss: 0.4109
-09/17/2025 22:38:33 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 3 	Acc: 86.778 	Loss: 0.3860
-09/17/2025 22:38:37 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 4 	Acc: 88.517 	Loss: 0.3408
-09/17/2025 22:38:37 INFO	[trainers.sl_server]	Client4 Test =>                   	Acc: 26.300 	Loss: 3.8256
-09/17/2025 22:38:39 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 0 	Acc: 80.866 	Loss: 0.6726
-09/17/2025 22:38:41 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 1 	Acc: 88.380 	Loss: 0.3519
-09/17/2025 22:38:43 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 2 	Acc: 89.122 	Loss: 0.3131
-09/17/2025 22:38:44 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 3 	Acc: 90.074 	Loss: 0.2963
-09/17/2025 22:38:46 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 4 	Acc: 91.173 	Loss: 0.2634
-09/17/2025 22:38:47 INFO	[trainers.sl_server]	Client6 Test =>                   	Acc: 44.700 	Loss: 1.9421
-09/17/2025 22:38:47 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 0 	Acc: 81.703 	Loss: 0.7207
-09/17/2025 22:38:48 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 1 	Acc: 92.747 	Loss: 0.2037
-09/17/2025 22:38:49 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 2 	Acc: 94.588 	Loss: 0.1650
-09/17/2025 22:38:49 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 3 	Acc: 95.425 	Loss: 0.1309
-09/17/2025 22:38:50 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 4 	Acc: 96.597 	Loss: 0.1058
-09/17/2025 22:38:50 INFO	[trainers.sl_server]	Client8 Test =>                   	Acc: 41.000 	Loss: 2.3069
-09/17/2025 22:38:50 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 0 	Acc: 46.568 	Loss: 2.8963
-09/17/2025 22:38:51 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 1 	Acc: 99.219 	Loss: 0.0560
-09/17/2025 22:38:51 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 2 	Acc: 99.219 	Loss: 0.0416
-09/17/2025 22:38:51 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 3 	Acc: 99.414 	Loss: 0.0371
-09/17/2025 22:38:51 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 4 	Acc: 99.414 	Loss: 0.0348
-09/17/2025 22:38:51 INFO	[trainers.sl_server]	Client0 Test =>                   	Acc: 19.500 	Loss: 4.1828
-09/17/2025 22:38:51 INFO	[trainers.sl_server]	====================== SERVER V1==========================
-09/17/2025 22:38:51 INFO	[trainers.sl_server]	 Train: Round   0, Avg Accuracy 90.032 | Avg Loss 0.294
-09/17/2025 22:38:51 INFO	[trainers.sl_server]	 Test: Round   0, Avg Accuracy 26.420 | Avg Loss 3.445
-09/17/2025 22:38:51 INFO	[trainers.sl_server]	==========================================================
-09/17/2025 22:38:52 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 0 	Acc: 65.150 	Loss: 1.1178
-09/17/2025 22:38:52 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 1 	Acc: 78.771 	Loss: 0.5551
-09/17/2025 22:38:53 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 2 	Acc: 83.379 	Loss: 0.4508
-09/17/2025 22:38:53 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 3 	Acc: 82.751 	Loss: 0.4603
-09/17/2025 22:38:54 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 4 	Acc: 84.240 	Loss: 0.4176
-09/17/2025 22:38:54 INFO	[trainers.sl_server]	Client7 Test =>                   	Acc: 13.900 	Loss: 4.1513
-09/17/2025 22:38:58 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 0 	Acc: 87.203 	Loss: 0.4123
-09/17/2025 22:39:02 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 1 	Acc: 90.154 	Loss: 0.3007
-09/17/2025 22:39:06 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 2 	Acc: 86.010 	Loss: 0.4217
-09/17/2025 22:39:09 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 3 	Acc: 88.259 	Loss: 0.3429
-09/17/2025 22:39:13 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 4 	Acc: 89.701 	Loss: 0.3043
-09/17/2025 22:39:14 INFO	[trainers.sl_server]	Client4 Test =>                   	Acc: 41.600 	Loss: 2.6672
-09/17/2025 22:39:14 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 0 	Acc: 79.341 	Loss: 0.7354
-09/17/2025 22:39:14 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 1 	Acc: 92.329 	Loss: 0.2569
-09/17/2025 22:39:14 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 2 	Acc: 93.497 	Loss: 0.2073
-09/17/2025 22:39:15 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 3 	Acc: 94.357 	Loss: 0.1948
-09/17/2025 22:39:15 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 4 	Acc: 95.079 	Loss: 0.1731
-09/17/2025 22:39:15 INFO	[trainers.sl_server]	Client2 Test =>                   	Acc: 43.800 	Loss: 3.5453
-09/17/2025 22:39:18 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 0 	Acc: 84.904 	Loss: 0.4493
-09/17/2025 22:39:21 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 1 	Acc: 90.540 	Loss: 0.2707
-09/17/2025 22:39:24 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 2 	Acc: 91.340 	Loss: 0.2425
+09/18/2025 20:38:13 INFO	[utils.utils]	🌱 Setting random seed to 1234 for reproducibility
+09/18/2025 20:38:13 INFO	[utils.utils]	✅ Random seed fixed for reproducible results
+09/18/2025 20:38:13 INFO	[__main__]	GPU: NVIDIA GeForce RTX 3080
+09/18/2025 20:38:13 INFO	[__main__]	Start: SL ResNet18 on CIFAR10
+09/18/2025 20:38:15 INFO	[__main__]	cifar10 train dataset(label) length: 50000
+09/18/2025 20:38:15 INFO	[__main__]	cifar10 train dataset(label) unique: [0 1 2 3 4 5 6 7 8 9]
+09/18/2025 20:38:15 INFO	[__main__]	dict_users with dirichlet distribution
+09/18/2025 20:38:15 INFO	[__main__]			dict_users[0] length: 412
+09/18/2025 20:38:15 INFO	[__main__]			dict_users[1] length: 10751
+09/18/2025 20:38:15 INFO	[__main__]			dict_users[2] length: 1003
+09/18/2025 20:38:15 INFO	[__main__]			dict_users[3] length: 7139
+09/18/2025 20:38:15 INFO	[__main__]			dict_users[4] length: 14595
+09/18/2025 20:38:15 INFO	[__main__]			dict_users[5] length: 3628
+09/18/2025 20:38:15 INFO	[__main__]			dict_users[6] length: 6983
+09/18/2025 20:38:15 INFO	[__main__]			dict_users[7] length: 1809
+09/18/2025 20:38:15 INFO	[__main__]			dict_users[8] length: 2741
+09/18/2025 20:38:15 INFO	[__main__]			dict_users[9] length: 939
+09/18/2025 20:38:15 INFO	[__main__]	total_items_count: 50000
+l Epoch: 0 	Acc: 89.344 	Loss: 0.5867
+n => Local Epoch: 1 	Acc: 94.024 	Loss: 0.2426
+09/18/2025 20:38:35 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 2 	Acc: 94.913 	Loss: 0.2081
+09/18/2025 20:38:36 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 3 	Acc: 94.989 	Loss: 0.1894
+09/18/2025 20:38:37 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 4 	Acc: 95.530 	Loss: 0.1794
+09/18/2025 20:38:37 INFO	[trainers.sl_server]	Client5 Test =>                   	Acc: 9.300 	Loss: 4.5747
+09/18/2025 20:38:38 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 0 	Acc: 51.710 	Loss: 1.8852
+09/18/2025 20:38:38 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 1 	Acc: 62.616 	Loss: 1.0207
+09/18/2025 20:38:39 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 2 	Acc: 64.761 	Loss: 0.9480
+09/18/2025 20:38:39 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 3 	Acc: 66.186 	Loss: 0.8547
+09/18/2025 20:38:40 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 4 	Acc: 69.026 	Loss: 0.7958
+09/18/2025 20:38:40 INFO	[trainers.sl_server]	Client7 Test =>                   	Acc: 23.400 	Loss: 3.5887
+09/18/2025 20:38:43 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 0 	Acc: 68.134 	Loss: 0.8549
+09/18/2025 20:38:46 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 1 	Acc: 75.797 	Loss: 0.6047
+09/18/2025 20:38:49 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 2 	Acc: 80.412 	Loss: 0.5142
+09/18/2025 20:38:51 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 3 	Acc: 83.741 	Loss: 0.4367
+09/18/2025 20:38:54 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 4 	Acc: 86.141 	Loss: 0.3771
+09/18/2025 20:38:54 INFO	[trainers.sl_server]	Client1 Test =>                   	Acc: 23.400 	Loss: 4.0285
+09/18/2025 20:38:55 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 0 	Acc: 67.543 	Loss: 1.9168
+09/18/2025 20:38:55 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 1 	Acc: 86.491 	Loss: 0.5378
+09/18/2025 20:38:55 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 2 	Acc: 87.486 	Loss: 0.4340
+09/18/2025 20:38:55 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 3 	Acc: 88.013 	Loss: 0.4185
+09/18/2025 20:38:56 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 4 	Acc: 90.317 	Loss: 0.3508
+09/18/2025 20:38:56 INFO	[trainers.sl_server]	Client2 Test =>                   	Acc: 29.000 	Loss: 3.4670
+09/18/2025 20:38:58 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 0 	Acc: 76.493 	Loss: 0.7587
+09/18/2025 20:39:00 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 1 	Acc: 83.861 	Loss: 0.4657
+09/18/2025 20:39:02 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 2 	Acc: 86.123 	Loss: 0.4086
+09/18/2025 20:39:03 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 3 	Acc: 87.788 	Loss: 0.3604
+09/18/2025 20:39:05 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 4 	Acc: 88.876 	Loss: 0.3297
+09/18/2025 20:39:06 INFO	[trainers.sl_server]	Client3 Test =>                   	Acc: 17.400 	Loss: 3.8826
+09/18/2025 20:39:06 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 0 	Acc: 52.271 	Loss: 2.4014
+09/18/2025 20:39:06 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 1 	Acc: 88.781 	Loss: 0.3118
+09/18/2025 20:39:06 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 2 	Acc: 92.680 	Loss: 0.2034
+09/18/2025 20:39:07 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 3 	Acc: 94.338 	Loss: 0.1656
+09/18/2025 20:39:07 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 4 	Acc: 94.731 	Loss: 0.1593
+09/18/2025 20:39:07 INFO	[trainers.sl_server]	Client9 Test =>                   	Acc: 30.200 	Loss: 2.6557
+09/18/2025 20:39:11 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 0 	Acc: 78.236 	Loss: 0.6834
+09/18/2025 20:39:15 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 1 	Acc: 82.862 	Loss: 0.4934
+09/18/2025 20:39:19 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 2 	Acc: 86.424 	Loss: 0.4109
+09/18/2025 20:39:23 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 3 	Acc: 86.778 	Loss: 0.3860
+09/18/2025 20:39:26 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 4 	Acc: 88.517 	Loss: 0.3408
+09/18/2025 20:39:27 INFO	[trainers.sl_server]	Client4 Test =>                   	Acc: 26.300 	Loss: 3.8256
+09/18/2025 20:39:29 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 0 	Acc: 80.866 	Loss: 0.6726
+09/18/2025 20:39:30 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 1 	Acc: 88.380 	Loss: 0.3519
+09/18/2025 20:39:32 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 2 	Acc: 89.122 	Loss: 0.3131
+09/18/2025 20:39:34 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 3 	Acc: 90.074 	Loss: 0.2963
+09/18/2025 20:39:36 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 4 	Acc: 91.173 	Loss: 0.2634
+09/18/2025 20:39:36 INFO	[trainers.sl_server]	Client6 Test =>                   	Acc: 44.700 	Loss: 1.9421
+09/18/2025 20:39:37 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 0 	Acc: 81.703 	Loss: 0.7207
+09/18/2025 20:39:38 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 1 	Acc: 92.747 	Loss: 0.2037
+09/18/2025 20:39:38 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 2 	Acc: 94.588 	Loss: 0.1650
+09/18/2025 20:39:39 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 3 	Acc: 95.425 	Loss: 0.1309
+09/18/2025 20:39:40 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 4 	Acc: 96.597 	Loss: 0.1058
+09/18/2025 20:39:40 INFO	[trainers.sl_server]	Client8 Test =>                   	Acc: 41.000 	Loss: 2.3069
+09/18/2025 20:39:40 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 0 	Acc: 46.568 	Loss: 2.8963
+09/18/2025 20:39:40 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 1 	Acc: 99.219 	Loss: 0.0560
+09/18/2025 20:39:40 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 2 	Acc: 99.219 	Loss: 0.0416
+09/18/2025 20:39:40 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 3 	Acc: 99.414 	Loss: 0.0371
+09/18/2025 20:39:41 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 4 	Acc: 99.414 	Loss: 0.0348
+09/18/2025 20:39:41 INFO	[trainers.sl_server]	Client0 Test =>                   	Acc: 19.500 	Loss: 4.1828
+09/18/2025 20:39:41 INFO	[trainers.sl_server]	====================== SERVER V1==========================
+09/18/2025 20:39:41 INFO	[trainers.sl_server]	 Train: Round   0, Avg Accuracy 90.032 | Avg Loss 0.294
+09/18/2025 20:39:41 INFO	[trainers.sl_server]	 Test: Round   0, Avg Accuracy 26.420 | Avg Loss 3.445
+09/18/2025 20:39:41 INFO	[trainers.sl_server]	==========================================================
+09/18/2025 20:39:41 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 0 	Acc: 65.150 	Loss: 1.1178
+09/18/2025 20:39:42 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 1 	Acc: 78.771 	Loss: 0.5551
+09/18/2025 20:39:42 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 2 	Acc: 83.379 	Loss: 0.4508
+09/18/2025 20:39:43 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 3 	Acc: 82.751 	Loss: 0.4603
+09/18/2025 20:39:43 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 4 	Acc: 84.240 	Loss: 0.4176
+09/18/2025 20:39:43 INFO	[trainers.sl_server]	Client7 Test =>                   	Acc: 13.900 	Loss: 4.1513
+09/18/2025 20:39:47 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 0 	Acc: 87.203 	Loss: 0.4123
+09/18/2025 20:39:51 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 1 	Acc: 90.154 	Loss: 0.3007
+09/18/2025 20:39:55 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 2 	Acc: 86.010 	Loss: 0.4217
+09/18/2025 20:39:59 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 3 	Acc: 88.259 	Loss: 0.3429
+09/18/2025 20:40:03 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 4 	Acc: 89.701 	Loss: 0.3043
+09/18/2025 20:40:03 INFO	[trainers.sl_server]	Client4 Test =>                   	Acc: 41.600 	Loss: 2.6672
+09/18/2025 20:40:03 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 0 	Acc: 79.341 	Loss: 0.7354
+09/18/2025 20:40:04 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 1 	Acc: 92.329 	Loss: 0.2569
+09/18/2025 20:40:04 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 2 	Acc: 93.497 	Loss: 0.2073
+09/18/2025 20:40:04 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 3 	Acc: 94.357 	Loss: 0.1948
+09/18/2025 20:40:04 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 4 	Acc: 95.079 	Loss: 0.1731
+09/18/2025 20:40:05 INFO	[trainers.sl_server]	Client2 Test =>                   	Acc: 43.800 	Loss: 3.5453
+09/18/2025 20:40:08 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 0 	Acc: 84.904 	Loss: 0.4493
+09/18/2025 20:40:10 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 1 	Acc: 90.540 	Loss: 0.2707
+09/18/2025 20:40:13 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 2 	Acc: 91.340 	Loss: 0.2425
+09/18/2025 20:40:16 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 3 	Acc: 92.587 	Loss: 0.2164
+09/18/2025 20:40:19 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 4 	Acc: 92.949 	Loss: 0.1960
+09/18/2025 20:40:19 INFO	[trainers.sl_server]	Client1 Test =>                   	Acc: 33.300 	Loss: 3.3774
+09/18/2025 20:40:20 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 0 	Acc: 93.620 	Loss: 0.2260
+09/18/2025 20:40:21 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 1 	Acc: 96.541 	Loss: 0.1228
+09/18/2025 20:40:21 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 2 	Acc: 97.313 	Loss: 0.0888
+09/18/2025 20:40:22 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 3 	Acc: 98.047 	Loss: 0.0769
+09/18/2025 20:40:23 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 4 	Acc: 97.662 	Loss: 0.0736
+09/18/2025 20:40:23 INFO	[trainers.sl_server]	Client8 Test =>                   	Acc: 34.600 	Loss: 4.0507
+09/18/2025 20:40:24 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 0 	Acc: 88.338 	Loss: 0.6603
+09/18/2025 20:40:25 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 1 	Acc: 97.686 	Loss: 0.1010
+09/18/2025 20:40:26 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 2 	Acc: 98.063 	Loss: 0.0780
+09/18/2025 20:40:27 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 3 	Acc: 98.572 	Loss: 0.0639
+09/18/2025 20:40:28 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 4 	Acc: 98.494 	Loss: 0.0577
+09/18/2025 20:40:28 INFO	[trainers.sl_server]	Client5 Test =>                   	Acc: 25.300 	Loss: 4.4195
+09/18/2025 20:40:28 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 0 	Acc: 67.780 	Loss: 1.4807
+09/18/2025 20:40:29 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 1 	Acc: 95.117 	Loss: 0.1622
+09/18/2025 20:40:29 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 2 	Acc: 95.708 	Loss: 0.1205
+09/18/2025 20:40:29 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 3 	Acc: 96.584 	Loss: 0.0965
+09/18/2025 20:40:29 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 4 	Acc: 98.242 	Loss: 0.0616
+09/18/2025 20:40:30 INFO	[trainers.sl_server]	Client9 Test =>                   	Acc: 43.900 	Loss: 2.1854
+09/18/2025 20:40:30 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 0 	Acc: 47.461 	Loss: 2.4961
+09/18/2025 20:40:30 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 1 	Acc: 98.828 	Loss: 0.0867
+09/18/2025 20:40:30 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 2 	Acc: 99.414 	Loss: 0.0506
+09/18/2025 20:40:30 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 3 	Acc: 99.414 	Loss: 0.0472
+09/18/2025 20:40:30 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 4 	Acc: 99.414 	Loss: 0.0436
+09/18/2025 20:40:30 INFO	[trainers.sl_server]	Client0 Test =>                   	Acc: 22.400 	Loss: 3.6484
+09/18/2025 20:40:32 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 0 	Acc: 86.638 	Loss: 0.4440
+09/18/2025 20:40:34 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 1 	Acc: 90.959 	Loss: 0.2621
+09/18/2025 20:40:36 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 2 	Acc: 92.687 	Loss: 0.2194
+09/18/2025 20:40:38 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 3 	Acc: 92.934 	Loss: 0.2045
+09/18/2025 20:40:40 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 4 	Acc: 93.325 	Loss: 0.1904
+09/18/2025 20:40:40 INFO	[trainers.sl_server]	Client3 Test =>                   	Acc: 21.500 	Loss: 3.7512
+09/18/2025 20:40:42 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 0 	Acc: 86.483 	Loss: 0.4402
+09/18/2025 20:40:44 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 1 	Acc: 91.295 	Loss: 0.2533
+09/18/2025 20:40:46 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 2 	Acc: 92.079 	Loss: 0.2265
+09/18/2025 20:40:48 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 3 	Acc: 92.656 	Loss: 0.2122
+09/18/2025 20:40:49 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 4 	Acc: 93.454 	Loss: 0.1889
+09/18/2025 20:40:50 INFO	[trainers.sl_server]	Client6 Test =>                   	Acc: 42.800 	Loss: 2.6473
+09/18/2025 20:40:50 INFO	[trainers.sl_server]	====================== SERVER V1==========================
+09/18/2025 20:40:50 INFO	[trainers.sl_server]	 Train: Round   1, Avg Accuracy 94.256 | Avg Loss 0.171
+09/18/2025 20:40:50 INFO	[trainers.sl_server]	 Test: Round   1, Avg Accuracy 32.310 | Avg Loss 3.444
+09/18/2025 20:40:50 INFO	[trainers.sl_server]	==========================================================
+09/18/2025 20:40:54 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 0 	Acc: 89.216 	Loss: 0.3714
+09/18/2025 20:40:57 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 1 	Acc: 91.744 	Loss: 0.2492
+09/18/2025 20:41:01 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 2 	Acc: 91.972 	Loss: 0.2379
+09/18/2025 20:41:05 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 3 	Acc: 92.964 	Loss: 0.2074
+09/18/2025 20:41:09 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 4 	Acc: 92.935 	Loss: 0.2178
+09/18/2025 20:41:09 INFO	[trainers.sl_server]	Client4 Test =>                   	Acc: 58.200 	Loss: 1.4734
+09/18/2025 20:41:11 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 0 	Acc: 86.528 	Loss: 0.4489
+09/18/2025 20:41:13 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 1 	Acc: 92.681 	Loss: 0.2190
+09/18/2025 20:41:15 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 2 	Acc: 94.221 	Loss: 0.1778
+09/18/2025 20:41:17 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 3 	Acc: 94.429 	Loss: 0.1659
+09/18/2025 20:41:19 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 4 	Acc: 95.116 	Loss: 0.1499
+09/18/2025 20:41:19 INFO	[trainers.sl_server]	Client6 Test =>                   	Acc: 60.700 	Loss: 1.2329
+09/18/2025 20:41:22 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 0 	Acc: 88.262 	Loss: 0.3613
+09/18/2025 20:41:25 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 1 	Acc: 93.238 	Loss: 0.1968
+09/18/2025 20:41:28 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 2 	Acc: 94.270 	Loss: 0.1707
+09/18/2025 20:41:31 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 3 	Acc: 94.754 	Loss: 0.1510
+09/18/2025 20:41:33 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 4 	Acc: 95.601 	Loss: 0.1298
+09/18/2025 20:41:34 INFO	[trainers.sl_server]	Client1 Test =>                   	Acc: 51.700 	Loss: 2.1555
+09/18/2025 20:41:35 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 0 	Acc: 84.231 	Loss: 0.5746
+09/18/2025 20:41:37 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 1 	Acc: 93.275 	Loss: 0.2034
+09/18/2025 20:41:39 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 2 	Acc: 94.599 	Loss: 0.1631
+09/18/2025 20:41:41 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 3 	Acc: 95.366 	Loss: 0.1387
+09/18/2025 20:41:43 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 4 	Acc: 95.218 	Loss: 0.1298
+09/18/2025 20:41:43 INFO	[trainers.sl_server]	Client3 Test =>                   	Acc: 36.900 	Loss: 2.6465
+09/18/2025 20:41:44 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 0 	Acc: 57.542 	Loss: 1.8663
+09/18/2025 20:41:44 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 1 	Acc: 92.287 	Loss: 0.2413
+09/18/2025 20:41:44 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 2 	Acc: 93.792 	Loss: 0.1930
+09/18/2025 20:41:44 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 3 	Acc: 95.119 	Loss: 0.1636
+09/18/2025 20:41:45 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 4 	Acc: 96.467 	Loss: 0.1299
+09/18/2025 20:41:45 INFO	[trainers.sl_server]	Client2 Test =>                   	Acc: 51.100 	Loss: 1.7264
+09/18/2025 20:41:45 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 0 	Acc: 48.996 	Loss: 1.9209
+09/18/2025 20:41:45 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 1 	Acc: 99.414 	Loss: 0.0804
+09/18/2025 20:41:45 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 2 	Acc: 99.609 	Loss: 0.0469
+09/18/2025 20:41:45 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 3 	Acc: 99.414 	Loss: 0.0433
+09/18/2025 20:41:45 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 4 	Acc: 99.414 	Loss: 0.0327
+09/18/2025 20:41:46 INFO	[trainers.sl_server]	Client0 Test =>                   	Acc: 26.500 	Loss: 3.0640
+09/18/2025 20:41:46 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 0 	Acc: 73.097 	Loss: 1.0044
+09/18/2025 20:41:47 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 1 	Acc: 85.279 	Loss: 0.4160
+09/18/2025 20:41:47 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 2 	Acc: 87.730 	Loss: 0.3575
+09/18/2025 20:41:48 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 3 	Acc: 89.317 	Loss: 0.3014
+09/18/2025 20:41:48 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 4 	Acc: 91.667 	Loss: 0.2529
+09/18/2025 20:41:48 INFO	[trainers.sl_server]	Client7 Test =>                   	Acc: 28.800 	Loss: 3.1927
+09/18/2025 20:41:49 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 0 	Acc: 89.498 	Loss: 0.4959
+09/18/2025 20:41:50 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 1 	Acc: 98.680 	Loss: 0.0601
+09/18/2025 20:41:51 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 2 	Acc: 98.606 	Loss: 0.0489
+09/18/2025 20:41:52 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 3 	Acc: 99.033 	Loss: 0.0404
+09/18/2025 20:41:53 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 4 	Acc: 99.192 	Loss: 0.0328
+09/18/2025 20:41:53 INFO	[trainers.sl_server]	Client5 Test =>                   	Acc: 34.600 	Loss: 3.0754
+09/18/2025 20:41:54 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 0 	Acc: 64.458 	Loss: 1.6029
+09/18/2025 20:41:54 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 1 	Acc: 97.173 	Loss: 0.1209
+09/18/2025 20:41:54 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 2 	Acc: 97.852 	Loss: 0.0881
+09/18/2025 20:41:54 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 3 	Acc: 98.535 	Loss: 0.0626
+09/18/2025 20:41:55 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 4 	Acc: 98.828 	Loss: 0.0515
+09/18/2025 20:41:55 INFO	[trainers.sl_server]	Client9 Test =>                   	Acc: 50.700 	Loss: 1.6792
+09/18/2025 20:41:55 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 0 	Acc: 85.112 	Loss: 0.5830
+09/18/2025 20:41:56 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 1 	Acc: 96.781 	Loss: 0.1188
+09/18/2025 20:41:57 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 2 	Acc: 97.535 	Loss: 0.0831
+09/18/2025 20:41:58 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 3 	Acc: 97.869 	Loss: 0.0684
+09/18/2025 20:41:58 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 4 	Acc: 98.438 	Loss: 0.0570
+09/18/2025 20:41:59 INFO	[trainers.sl_server]	Client8 Test =>                   	Acc: 31.900 	Loss: 2.2928
+09/18/2025 20:41:59 INFO	[trainers.sl_server]	====================== SERVER V1==========================
+09/18/2025 20:41:59 INFO	[trainers.sl_server]	 Train: Round   2, Avg Accuracy 96.287 | Avg Loss 0.118
+09/18/2025 20:41:59 INFO	[trainers.sl_server]	 Test: Round   2, Avg Accuracy 43.110 | Avg Loss 2.254
+09/18/2025 20:41:59 INFO	[trainers.sl_server]	==========================================================
+09/18/2025 20:42:00 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 0 	Acc: 89.905 	Loss: 0.4273
+09/18/2025 20:42:01 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 1 	Acc: 98.411 	Loss: 0.0668
+09/18/2025 20:42:02 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 2 	Acc: 98.842 	Loss: 0.0466
+09/18/2025 20:42:03 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 3 	Acc: 99.030 	Loss: 0.0361
+09/18/2025 20:42:03 INFO	[trainers.sl_server]	Client5 Train => Local Epoch: 4 	Acc: 99.221 	Loss: 0.0309
+09/18/2025 20:42:04 INFO	[trainers.sl_server]	Client5 Test =>                   	Acc: 30.100 	Loss: 4.1485
+09/18/2025 20:42:06 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 0 	Acc: 87.736 	Loss: 0.4068
+09/18/2025 20:42:07 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 1 	Acc: 93.812 	Loss: 0.1864
+09/18/2025 20:42:09 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 2 	Acc: 94.764 	Loss: 0.1541
+09/18/2025 20:42:11 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 3 	Acc: 95.832 	Loss: 0.1297
+09/18/2025 20:42:13 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 4 	Acc: 95.810 	Loss: 0.1208
+09/18/2025 20:42:13 INFO	[trainers.sl_server]	Client6 Test =>                   	Acc: 47.300 	Loss: 2.0197
+09/18/2025 20:42:16 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 0 	Acc: 91.359 	Loss: 0.2791
+09/18/2025 20:42:19 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 1 	Acc: 95.182 	Loss: 0.1427
+09/18/2025 20:42:22 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 2 	Acc: 96.102 	Loss: 0.1192
+09/18/2025 20:42:25 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 3 	Acc: 96.038 	Loss: 0.1139
+09/18/2025 20:42:28 INFO	[trainers.sl_server]	Client1 Train => Local Epoch: 4 	Acc: 96.605 	Loss: 0.0991
+09/18/2025 20:42:28 INFO	[trainers.sl_server]	Client1 Test =>                   	Acc: 55.400 	Loss: 1.7530
+09/18/2025 20:42:28 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 0 	Acc: 72.393 	Loss: 1.0194
+09/18/2025 20:42:29 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 1 	Acc: 87.754 	Loss: 0.3658
+09/18/2025 20:42:29 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 2 	Acc: 90.677 	Loss: 0.2725
+09/18/2025 20:42:30 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 3 	Acc: 91.167 	Loss: 0.2428
+09/18/2025 20:42:30 INFO	[trainers.sl_server]	Client7 Train => Local Epoch: 4 	Acc: 93.045 	Loss: 0.1954
+09/18/2025 20:42:30 INFO	[trainers.sl_server]	Client7 Test =>                   	Acc: 34.800 	Loss: 3.3849
+09/18/2025 20:42:31 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 0 	Acc: 77.204 	Loss: 0.6785
+09/18/2025 20:42:31 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 1 	Acc: 99.219 	Loss: 0.0547
+09/18/2025 20:42:31 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 2 	Acc: 99.609 	Loss: 0.0274
+09/18/2025 20:42:31 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 3 	Acc: 99.609 	Loss: 0.0266
+09/18/2025 20:42:31 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 4 	Acc: 99.609 	Loss: 0.0182
+09/18/2025 20:42:31 INFO	[trainers.sl_server]	Client0 Test =>                   	Acc: 41.000 	Loss: 2.9550
+09/18/2025 20:42:31 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 0 	Acc: 60.434 	Loss: 1.7821
+09/18/2025 20:42:32 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 1 	Acc: 93.733 	Loss: 0.2536
+09/18/2025 20:42:32 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 2 	Acc: 94.474 	Loss: 0.1996
+09/18/2025 20:42:32 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 3 	Acc: 95.548 	Loss: 0.1468
+09/18/2025 20:42:33 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 4 	Acc: 97.267 	Loss: 0.1253
+09/18/2025 20:42:33 INFO	[trainers.sl_server]	Client2 Test =>                   	Acc: 46.500 	Loss: 1.8972
+09/18/2025 20:42:33 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 0 	Acc: 95.315 	Loss: 0.1528
+09/18/2025 20:42:33 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 1 	Acc: 98.633 	Loss: 0.0704
+09/18/2025 20:42:33 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 2 	Acc: 98.440 	Loss: 0.0594
+09/18/2025 20:42:34 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 3 	Acc: 98.342 	Loss: 0.0538
+09/18/2025 20:42:34 INFO	[trainers.sl_server]	Client9 Train => Local Epoch: 4 	Acc: 99.319 	Loss: 0.0365
+09/18/2025 20:42:34 INFO	[trainers.sl_server]	Client9 Test =>                   	Acc: 41.200 	Loss: 2.6406
+09/18/2025 20:42:36 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 0 	Acc: 87.587 	Loss: 0.4210
+09/18/2025 20:42:38 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 1 	Acc: 95.264 	Loss: 0.1455
+09/18/2025 20:42:40 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 2 	Acc: 95.926 	Loss: 0.1227
+09/18/2025 20:42:42 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 3 	Acc: 96.516 	Loss: 0.1035
+09/18/2025 20:42:44 INFO	[trainers.sl_server]	Client3 Train => Local Epoch: 4 	Acc: 96.869 	Loss: 0.0931
+09/18/2025 20:42:44 INFO	[trainers.sl_server]	Client3 Test =>                   	Acc: 43.400 	Loss: 2.2263
+09/18/2025 20:42:48 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 0 	Acc: 90.054 	Loss: 0.3463
+09/18/2025 20:42:52 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 1 	Acc: 94.524 	Loss: 0.1667
+09/18/2025 20:42:56 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 2 	Acc: 95.224 	Loss: 0.1480
+09/18/2025 20:43:00 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 3 	Acc: 95.414 	Loss: 0.1368
+09/18/2025 20:43:04 INFO	[trainers.sl_server]	Client4 Train => Local Epoch: 4 	Acc: 96.427 	Loss: 0.1139
+09/18/2025 20:43:04 INFO	[trainers.sl_server]	Client4 Test =>                   	Acc: 57.700 	Loss: 1.3067
+09/18/2025 20:43:05 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 0 	Acc: 85.461 	Loss: 0.5222
+09/18/2025 20:43:05 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 1 	Acc: 96.754 	Loss: 0.1062
+09/18/2025 20:43:06 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 2 	Acc: 98.224 	Loss: 0.0683
+09/18/2025 20:43:07 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 3 	Acc: 98.423 	Loss: 0.0518
+09/18/2025 20:43:07 INFO	[trainers.sl_server]	Client8 Train => Local Epoch: 4 	Acc: 98.535 	Loss: 0.0527
+09/18/2025 20:43:08 INFO	[trainers.sl_server]	Client8 Test =>                   	Acc: 57.900 	Loss: 2.0150
+09/18/2025 20:43:08 INFO	[trainers.sl_server]	====================== SERVER V1==========================
+09/18/2025 20:43:08 INFO	[trainers.sl_server]	 Train: Round   3, Avg Accuracy 97.271 | Avg Loss 0.089
+09/18/2025 20:43:08 INFO	[trainers.sl_server]	 Test: Round   3, Avg Accuracy 45.530 | Avg Loss 2.435
+09/18/2025 20:43:08 INFO	[trainers.sl_server]	==========================================================
+09/18/2025 20:43:10 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 0 	Acc: 86.650 	Loss: 0.4854
+09/18/2025 20:43:11 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 1 	Acc: 94.048 	Loss: 0.1779
+09/18/2025 20:43:13 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 2 	Acc: 95.275 	Loss: 0.1417
+09/18/2025 20:43:15 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 3 	Acc: 96.230 	Loss: 0.1184
+09/18/2025 20:43:17 INFO	[trainers.sl_server]	Client6 Train => Local Epoch: 4 	Acc: 96.568 	Loss: 0.1068
+09/18/2025 20:43:17 INFO	[trainers.sl_server]	Client6 Test =>                   	Acc: 42.600 	Loss: 1.7706
+09/18/2025 20:43:17 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 0 	Acc: 70.335 	Loss: 1.2018
+09/18/2025 20:43:18 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 1 	Acc: 91.998 	Loss: 0.2914
+09/18/2025 20:43:18 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 2 	Acc: 94.688 	Loss: 0.1740
+09/18/2025 20:43:18 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 3 	Acc: 95.333 	Loss: 0.1608
+09/18/2025 20:43:19 INFO	[trainers.sl_server]	Client2 Train => Local Epoch: 4 	Acc: 97.306 	Loss: 0.1163
+09/18/2025 20:43:19 INFO	[trainers.sl_server]	Client2 Test =>                   	Acc: 51.500 	Loss: 2.0966
+09/18/2025 20:43:19 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 0 	Acc: 36.830 	Loss: 2.6857
+09/18/2025 20:43:19 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 1 	Acc: 97.461 	Loss: 0.1464
+09/18/2025 20:43:19 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 2 	Acc: 99.414 	Loss: 0.0611
+09/18/2025 20:43:19 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 3 	Acc: 99.414 	Loss: 0.0516
+09/18/2025 20:43:19 INFO	[trainers.sl_server]	Client0 Train => Local Epoch: 4 	Acc: 99.414 	Loss: 0.0377
+09/18/2025 20:43:19 INFO	[trainers.sl_server]	Client0 Test =>                   	Acc: 30.900 	Loss: 2.9414
