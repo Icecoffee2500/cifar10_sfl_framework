@@ -1,91 +1,18 @@
-09/17/2025 22:08:16 INFO	[utils.utils]	🌱 Setting random seed to 1234 for reproducibility
-09/17/2025 22:08:16 INFO	[utils.utils]	✅ Random seed fixed for reproducible results
-09/17/2025 22:08:16 INFO	[__main__]	GPU: NVIDIA GeForce RTX 3080
-09/17/2025 22:08:16 INFO	[__main__]	Start: FL ResNet18 on CIFAR10
-09/17/2025 22:08:17 INFO	[__main__]	cifar10 train dataset(label) length: 50000
-09/17/2025 22:08:17 INFO	[__main__]	cifar10 train dataset(label) unique: [0 1 2 3 4 5 6 7 8 9]
-09/17/2025 22:08:17 INFO	[__main__]	dict_users with dirichlet distribution
-09/17/2025 22:08:17 INFO	[__main__]			dict_users[0] length: 412
-09/17/2025 22:08:17 INFO	[__main__]			dict_users[1] length: 10751
-09/17/2025 22:08:17 INFO	[__main__]			dict_users[2] length: 1003
-09/17/2025 22:08:17 INFO	[__main__]			dict_users[3] length: 7139
-09/17/2025 22:08:17 INFO	[__main__]			dict_users[4] length: 14595
-09/17/2025 22:08:17 INFO	[__main__]			dict_users[5] length: 3628
-09/17/2025 22:08:17 INFO	[__main__]			dict_users[6] length: 6983
-09/17/2025 22:08:17 INFO	[__main__]			dict_users[7] length: 1809
-09/17/2025 22:08:17 INFO	[__main__]			dict_users[8] length: 2741
-09/17/2025 22:08:17 INFO	[__main__]			dict_users[9] length: 939
-09/17/2025 22:08:17 INFO	[__main__]	total_items_count: 50000
-09/17/2025 22:08:21 INFO	[trainers.fl_local_update]	Client5 Train => Local Epoch: 0  	Acc: 93.182 	Loss: 0.5458
-09/17/2025 22:08:22 INFO	[trainers.fl_local_update]	Client5 Train => Local Epoch: 1  	Acc: 100.000 	Loss: 0.1201
-09/17/2025 22:08:24 INFO	[trainers.fl_local_update]	Client5 Train => Local Epoch: 2  	Acc: 88.636 	Loss: 0.3374
-09/17/2025 22:08:26 INFO	[trainers.fl_local_update]	Client5 Train => Local Epoch: 3  	Acc: 95.455 	Loss: 0.1355
-09/17/2025 22:08:28 INFO	[trainers.fl_local_update]	Client5 Train => Local Epoch: 4  	Acc: 97.727 	Loss: 0.1106
-09/17/2025 22:08:28 INFO	[trainers.fl_local_update]	Client5 Test =>				Acc: 11.0000 	Loss: 4.583
-09/17/2025 22:08:35 INFO	[trainers.fl_local_update]	Client4 Train => Local Epoch: 0  	Acc: 66.667 	Loss: 1.2080
-09/17/2025 22:08:42 INFO	[trainers.fl_local_update]	Client4 Train => Local Epoch: 1  	Acc: 66.667 	Loss: 0.2958
-09/17/2025 22:08:49 INFO	[trainers.fl_local_update]	Client4 Train => Local Epoch: 2  	Acc: 66.667 	Loss: 1.3905
-09/17/2025 22:08:56 INFO	[trainers.fl_local_update]	Client4 Train => Local Epoch: 3  	Acc: 66.667 	Loss: 0.5077
-09/17/2025 22:09:03 INFO	[trainers.fl_local_update]	Client4 Train => Local Epoch: 4  	Acc: 66.667 	Loss: 3.1935
-09/17/2025 22:09:04 INFO	[trainers.fl_local_update]	Client4 Test =>				Acc: 12.0000 	Loss: 4.590
-09/17/2025 22:09:07 INFO	[trainers.fl_local_update]	Client6 Train => Local Epoch: 0  	Acc: 64.789 	Loss: 0.9242
-09/17/2025 22:09:10 INFO	[trainers.fl_local_update]	Client6 Train => Local Epoch: 1  	Acc: 73.239 	Loss: 0.9100
-09/17/2025 22:09:14 INFO	[trainers.fl_local_update]	Client6 Train => Local Epoch: 2  	Acc: 71.831 	Loss: 0.7414
-09/17/2025 22:09:17 INFO	[trainers.fl_local_update]	Client6 Train => Local Epoch: 3  	Acc: 76.056 	Loss: 0.6201
-09/17/2025 22:09:21 INFO	[trainers.fl_local_update]	Client6 Train => Local Epoch: 4  	Acc: 84.507 	Loss: 0.4528
-09/17/2025 22:09:21 INFO	[trainers.fl_local_update]	Client6 Test =>				Acc: 6.0000 	Loss: 4.593
-09/17/2025 22:09:21 INFO	[trainers.fl_local_update]	Client2 Train => Local Epoch: 0  	Acc: 75.701 	Loss: 1.4231
-09/17/2025 22:09:22 INFO	[trainers.fl_local_update]	Client2 Train => Local Epoch: 1  	Acc: 77.570 	Loss: 0.6790
-09/17/2025 22:09:22 INFO	[trainers.fl_local_update]	Client2 Train => Local Epoch: 2  	Acc: 72.897 	Loss: 0.9894
-09/17/2025 22:09:23 INFO	[trainers.fl_local_update]	Client2 Train => Local Epoch: 3  	Acc: 76.636 	Loss: 0.7279
-09/17/2025 22:09:23 INFO	[trainers.fl_local_update]	Client2 Train => Local Epoch: 4  	Acc: 70.093 	Loss: 1.0486
-09/17/2025 22:09:24 INFO	[trainers.fl_local_update]	Client2 Test =>				Acc: 8.0000 	Loss: 4.587
-09/17/2025 22:09:24 INFO	[trainers.fl_local_update]	Client9 Train => Local Epoch: 0  	Acc: 74.419 	Loss: 1.1139
-09/17/2025 22:09:25 INFO	[trainers.fl_local_update]	Client9 Train => Local Epoch: 1  	Acc: 67.442 	Loss: 0.7586
-09/17/2025 22:09:25 INFO	[trainers.fl_local_update]	Client9 Train => Local Epoch: 2  	Acc: 76.744 	Loss: 0.6703
-09/17/2025 22:09:25 INFO	[trainers.fl_local_update]	Client9 Train => Local Epoch: 3  	Acc: 79.070 	Loss: 0.4309
-09/17/2025 22:09:26 INFO	[trainers.fl_local_update]	Client9 Train => Local Epoch: 4  	Acc: 74.419 	Loss: 0.6694
-09/17/2025 22:09:26 INFO	[trainers.fl_local_update]	Client9 Test =>				Acc: 8.0000 	Loss: 4.594
-09/17/2025 22:09:31 INFO	[trainers.fl_local_update]	Client1 Train => Local Epoch: 0  	Acc: 70.079 	Loss: 0.7424
-09/17/2025 22:09:37 INFO	[trainers.fl_local_update]	Client1 Train => Local Epoch: 1  	Acc: 76.378 	Loss: 0.5436
-09/17/2025 22:09:42 INFO	[trainers.fl_local_update]	Client1 Train => Local Epoch: 2  	Acc: 79.528 	Loss: 0.5523
-09/17/2025 22:09:47 INFO	[trainers.fl_local_update]	Client1 Train => Local Epoch: 3  	Acc: 77.953 	Loss: 0.5756
-09/17/2025 22:09:52 INFO	[trainers.fl_local_update]	Client1 Train => Local Epoch: 4  	Acc: 88.189 	Loss: 0.3555
-09/17/2025 22:09:52 INFO	[trainers.fl_local_update]	Client1 Test =>				Acc: 14.0000 	Loss: 4.583
-09/17/2025 22:09:56 INFO	[trainers.fl_local_update]	Client3 Train => Local Epoch: 0  	Acc: 67.677 	Loss: 0.8473
-09/17/2025 22:09:59 INFO	[trainers.fl_local_update]	Client3 Train => Local Epoch: 1  	Acc: 81.818 	Loss: 0.5104
-09/17/2025 22:10:03 INFO	[trainers.fl_local_update]	Client3 Train => Local Epoch: 2  	Acc: 87.879 	Loss: 0.4926
-09/17/2025 22:10:06 INFO	[trainers.fl_local_update]	Client3 Train => Local Epoch: 3  	Acc: 79.798 	Loss: 0.7164
-09/17/2025 22:10:10 INFO	[trainers.fl_local_update]	Client3 Train => Local Epoch: 4  	Acc: 81.818 	Loss: 0.5309
-09/17/2025 22:10:10 INFO	[trainers.fl_local_update]	Client3 Test =>				Acc: 14.0000 	Loss: 4.574
-09/17/2025 22:10:11 INFO	[trainers.fl_local_update]	Client7 Train => Local Epoch: 0  	Acc: 52.941 	Loss: 1.2358
-09/17/2025 22:10:12 INFO	[trainers.fl_local_update]	Client7 Train => Local Epoch: 1  	Acc: 52.941 	Loss: 1.4360
-09/17/2025 22:10:13 INFO	[trainers.fl_local_update]	Client7 Train => Local Epoch: 2  	Acc: 64.706 	Loss: 0.8131
-09/17/2025 22:10:14 INFO	[trainers.fl_local_update]	Client7 Train => Local Epoch: 3  	Acc: 29.412 	Loss: 1.5024
-09/17/2025 22:10:14 INFO	[trainers.fl_local_update]	Client7 Train => Local Epoch: 4  	Acc: 76.471 	Loss: 0.6218
-09/17/2025 22:10:15 INFO	[trainers.fl_local_update]	Client7 Test =>				Acc: 10.0000 	Loss: 4.586
-09/17/2025 22:10:15 INFO	[trainers.fl_local_update]	Client0 Train => Local Epoch: 0  	Acc: 100.000 	Loss: 0.0002
-09/17/2025 22:10:15 INFO	[trainers.fl_local_update]	Client0 Train => Local Epoch: 1  	Acc: 92.857 	Loss: 2.1374
-09/17/2025 22:10:15 INFO	[trainers.fl_local_update]	Client0 Train => Local Epoch: 2  	Acc: 96.429 	Loss: 1.3311
-09/17/2025 22:10:15 INFO	[trainers.fl_local_update]	Client0 Train => Local Epoch: 3  	Acc: 100.000 	Loss: 0.0000
-09/17/2025 22:10:16 INFO	[trainers.fl_local_update]	Client0 Train => Local Epoch: 4  	Acc: 100.000 	Loss: 0.0000
-09/17/2025 22:10:16 INFO	[trainers.fl_local_update]	Client0 Test =>				Acc: 13.0000 	Loss: 4.588
-09/17/2025 22:10:17 INFO	[trainers.fl_local_update]	Client8 Train => Local Epoch: 0  	Acc: 77.358 	Loss: 1.3161
-09/17/2025 22:10:19 INFO	[trainers.fl_local_update]	Client8 Train => Local Epoch: 1  	Acc: 86.792 	Loss: 0.7265
-09/17/2025 22:10:20 INFO	[trainers.fl_local_update]	Client8 Train => Local Epoch: 2  	Acc: 84.906 	Loss: 0.5158
-09/17/2025 22:10:21 INFO	[trainers.fl_local_update]	Client8 Train => Local Epoch: 3  	Acc: 77.358 	Loss: 0.5815
-09/17/2025 22:10:23 INFO	[trainers.fl_local_update]	Client8 Train => Local Epoch: 4  	Acc: 90.566 	Loss: 0.3570
-09/17/2025 22:10:23 INFO	[trainers.fl_local_update]	Client8 Test =>				Acc: 9.0000 	Loss: 4.591
-09/17/2025 22:10:23 INFO	[__main__]	------------------------------------------------
-09/17/2025 22:10:23 INFO	[__main__]	------ Federation process at Server-Side -------
-09/17/2025 22:10:23 INFO	[__main__]	------------------------------------------------
-09/17/2025 22:10:23 INFO	[__main__]	------------------- SERVER ----------------------------------------------
-09/17/2025 22:10:23 INFO	[__main__]	Train: Round   0, Avg Accuracy 76.643 | Avg Loss 0.790
-09/17/2025 22:10:23 INFO	[__main__]	Test:  Round   0, Avg Accuracy 10.500 | Avg Loss 4.587
-09/17/2025 22:10:23 INFO	[__main__]	-------------------------------------------------------------------------
-09/17/2025 22:10:23 INFO	[__main__]	Training and Evaluation completed!
-09/17/2025 22:10:23 INFO	[__main__]	loss_train_collect: [0.7904347719832545]
-09/17/2025 22:10:23 INFO	[__main__]	loss_test_collect: [4.586750936508179]
-09/17/2025 22:10:23 INFO	[__main__]	acc_train_collect: [76.64296992115604]
-09/17/2025 22:10:23 INFO	[__main__]	acc_test_collect: [10.5]
-09/17/2025 22:10:23 INFO	[__main__]	best test acc: 10.5
+09/18/2025 17:26:59 INFO	[utils.utils]	🌱 Setting random seed to 1234 for reproducibility
+09/18/2025 17:26:59 INFO	[utils.utils]	✅ Random seed fixed for reproducible results
+09/18/2025 17:26:59 INFO	[__main__]	GPU: NVIDIA GeForce RTX 3080
+09/18/2025 17:26:59 INFO	[__main__]	Start: FL ResNet18 on CIFAR10
+09/18/2025 17:26:59 INFO	[__main__]	cifar10 train dataset(label) length: 50000
+09/18/2025 17:26:59 INFO	[__main__]	cifar10 train dataset(label) unique: [0 1 2 3 4 5 6 7 8 9]
+09/18/2025 17:26:59 INFO	[__main__]	dict_users with dirichlet distribution
+09/18/2025 17:26:59 INFO	[__main__]			dict_users[0] length: 3839
+09/18/2025 17:26:59 INFO	[__main__]			dict_users[1] length: 6669
+09/18/2025 17:26:59 INFO	[__main__]			dict_users[2] length: 3132
+09/18/2025 17:26:59 INFO	[__main__]			dict_users[3] length: 8201
+09/18/2025 17:26:59 INFO	[__main__]			dict_users[4] length: 7853
+09/18/2025 17:26:59 INFO	[__main__]			dict_users[5] length: 1702
+09/18/2025 17:26:59 INFO	[__main__]			dict_users[6] length: 7559
+09/18/2025 17:26:59 INFO	[__main__]			dict_users[7] length: 3721
+09/18/2025 17:26:59 INFO	[__main__]			dict_users[8] length: 4213
+09/18/2025 17:26:59 INFO	[__main__]			dict_users[9] length: 3111
+09/18/2025 17:26:59 INFO	[__main__]	total_items_count: 50000
