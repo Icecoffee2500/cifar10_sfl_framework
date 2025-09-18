@@ -21,6 +21,7 @@ from sklearn.model_selection import train_test_split
 from PIL import Image
 from glob import glob
 from pandas import DataFrame
+import wandb
 
 import random
 import numpy as np
@@ -60,6 +61,27 @@ num_users = 10
 epochs = 200
 frac = 1        # participation of clients; if 1 then 100% clients participate in SFLV1
 lr = 0.01
+# beta = 0.1
+beta = 0.5
+
+# wandb setup
+algorithm = "sfl-v1"
+model_name = "resnet18"
+dataset_name = "cifar10"
+etc = f"beta={beta}_client_num={num_users}"
+
+project_name = "SFL-V1 ResNet18 on CIFAR10"
+exp_name = f"{algorithm}_{model_name}_{dataset_name}_lr{lr}_globalep{epochs}_{etc}"
+cfg_dict = {
+    "algorithm": algorithm,
+    "model_name": model_name,
+    "dataset_name": dataset_name,
+    "lr": lr,
+    "beta": beta,
+    "num_users": num_users,
+    "global_epochs": epochs,
+    "etc": etc
+}
 
 
 #=====================================================================================================
@@ -284,7 +306,7 @@ def train_server(fx_client, y, l_epoch_count, l_epoch, idx, len_batch):
         batch_loss_train = []
         count1 = 0
         
-        prRed('Client{} Train => Local Epoch: {} \tAcc: {:.3f} \tLoss: {:.4f}'.format(idx, l_epoch_count, acc_avg_train, loss_avg_train), logger=logger)
+        prRed(f"Client{idx} Train => Local Epoch: {l_epoch_count} \tAcc: {acc_avg_train:.3f} \tLoss: {loss_avg_train:.4f}", logger=logger)
         
         # copy the last trained model in the batch       
         w_server = net_server.state_dict()      
@@ -405,8 +427,15 @@ def evaluate_server(fx_client, y, idx, len_batch, ell):
                 logger.info(' Train: Round {:3d}, Avg Accuracy {:.3f} | Avg Loss {:.3f}'.format(ell, acc_avg_all_user_train, loss_avg_all_user_train))
                 logger.info(' Test: Round {:3d}, Avg Accuracy {:.3f} | Avg Loss {:.3f}'.format(ell, acc_avg_all_user, loss_avg_all_user))
                 logger.info("==========================================================")
+
+                return {
+                    "train/acc_avg": acc_avg_all_user_train,
+                    "train/loss_avg": loss_avg_all_user_train,
+                    "test/acc_avg": acc_avg_all_user,
+                    "test/loss_avg": loss_avg_all_user
+                }
          
-    return 
+    return None
 
 #==============================================================================================================
 #                                       Clients-side Program
@@ -471,11 +500,11 @@ class Client(object):
                 fx = net(images)
                 
                 # Sending activations to server 
-                evaluate_server(fx, labels, self.idx, len_batch, ell)
+                wdb_log_dict = evaluate_server(fx, labels, self.idx, len_batch, ell)
             
             #prRed('Client{} Test => Epoch: {}'.format(self.idx, ell))
             
-        return          
+        return wdb_log_dict          
 #=====================================================================================================
 # dataset_iid() will create a dictionary to collect the indices of the data samples randomly for each client
 # IID HAM10000 datasets will be created based on this
@@ -585,7 +614,7 @@ logger.info(f"cifar10 train dataset(label) length: {len(targets)}")
 logger.info(f"cifar10 train dataset(label) unique: {np.unique(targets)}")
 
 # cifar10 train dataset (dirichlet distribution)
-dict_users_train = dirichlet_distribution_dict_users(targets, num_users, alpha=0.1, min_size=10)
+dict_users_train = dirichlet_distribution_dict_users(targets, num_users, alpha=beta, min_size=10)
 # cifar10 test dataset (iid distribution)
 dict_users_test = dataset_iid(dataset_test, num_users)
 
@@ -612,45 +641,49 @@ net_glob_client.train()
 w_glob_client = net_glob_client.state_dict()
 # Federation takes place after certain local epochs in train() client-side
 # this epoch is global epoch, also known as rounds
-for iter in range(epochs):
-    m = max(int(frac * num_users), 1)
-    idxs_users = np.random.choice(range(num_users), m, replace = False)
-    w_locals_client = []
-      
-    for idx in idxs_users:
-        local = Client(net_glob_client, idx, lr, device, dataset_train = dataset_train, dataset_test = dataset_test, idxs = dict_users_train[idx], idxs_test = dict_users_test[idx])
-        # Training ------------------
-        w_client = local.train(net = copy.deepcopy(net_glob_client).to(device))
-        w_locals_client.append(copy.deepcopy(w_client))
+with wandb.init(project=project_name, config=cfg_dict, name=exp_name) as run:
+    for iter in range(epochs):
+        m = max(int(frac * num_users), 1)
+        idxs_users = np.random.choice(range(num_users), m, replace = False)
+        w_locals_client = []
         
-        # Testing -------------------
-        local.evaluate(net = copy.deepcopy(net_glob_client).to(device), ell= iter)
-        
+        for idx in idxs_users:
+            local = Client(net_glob_client, idx, lr, device, dataset_train = dataset_train, dataset_test = dataset_test, idxs = dict_users_train[idx], idxs_test = dict_users_test[idx])
+            # Training ------------------
+            w_client = local.train(net = copy.deepcopy(net_glob_client).to(device))
+            w_locals_client.append(copy.deepcopy(w_client))
             
-    # Ater serving all clients for its local epochs------------
-    # Fed  Server: Federation process at Client-Side-----------
-    logger.info("-----------------------------------------------------------")
-    logger.info("------ FedServer: Federation process at Client-Side ------- ")
-    logger.info("-----------------------------------------------------------")
-    w_glob_client = FedAvg(w_locals_client)   
-    
-    # Update client-side global model 
-    net_glob_client.load_state_dict(w_glob_client)    
-    
-#===================================================================================     
+            # Testing -------------------
+            wdb_log_dict = local.evaluate(net = copy.deepcopy(net_glob_client).to(device), ell= iter)
 
-prGreen("Training and Evaluation completed!", logger=logger)    
+            if wdb_log_dict is not None:
+                wandb.log(wdb_log_dict, step=iter)
+            
+                
+        # Ater serving all clients for its local epochs------------
+        # Fed  Server: Federation process at Client-Side-----------
+        logger.info("-----------------------------------------------------------")
+        logger.info("------ FedServer: Federation process at Client-Side ------- ")
+        logger.info("-----------------------------------------------------------")
+        w_glob_client = FedAvg(w_locals_client)   
+        
+        # Update client-side global model 
+        net_glob_client.load_state_dict(w_glob_client)    
+        
+    #===================================================================================     
 
-#===============================================================================
-# Save output data to .excel file (we use for comparision plots)
-# round_process = [i for i in range(1, len(acc_train_collect)+1)]
+    prGreen("Training and Evaluation completed!", logger=logger)    
 
-logger.info(f"loss_train_collect: {loss_train_collect}")
-logger.info(f"loss_test_collect: {loss_test_collect}")
-logger.info(f"acc_train_collect: {acc_train_collect}")
-logger.info(f"acc_test_collect: {acc_test_collect}")
+    #===============================================================================
+    # Save output data to .excel file (we use for comparision plots)
+    # round_process = [i for i in range(1, len(acc_train_collect)+1)]
 
-prGreen(f"best test acc: {max(acc_test_collect)}", logger=logger)
+    logger.info(f"loss_train_collect: {loss_train_collect}")
+    logger.info(f"loss_test_collect: {loss_test_collect}")
+    logger.info(f"acc_train_collect: {acc_train_collect}")
+    logger.info(f"acc_test_collect: {acc_test_collect}")
+
+    prGreen(f"best test acc: {max(acc_test_collect)}", logger=logger)
 
 #=============================================================================
 #                         Program Completed
