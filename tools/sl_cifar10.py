@@ -137,7 +137,7 @@ logger.info(f"cifar10 train dataset(label) length: {len(targets)}")
 logger.info(f"cifar10 train dataset(label) unique: {np.unique(targets)}")
 
 # cifar10 train dataset (dirichlet distribution)
-dict_users_train = dirichlet_distribution_dict_users(targets, num_users, alpha=0.1, min_size=10)
+dict_users_train = dirichlet_distribution_dict_users(targets, num_users, alpha=beta, min_size=10)
 # cifar10 test dataset (iid distribution)
 dict_users_test = dataset_iid(dataset_test, num_users)
 
