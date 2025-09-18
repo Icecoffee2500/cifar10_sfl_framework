@@ -4,6 +4,8 @@ import torch
 import os
 import logging
 import sys
+import datetime
+from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
@@ -186,22 +188,28 @@ class MessageColorFormatter(logging.Formatter):
         return f"{prefix}{message}"
 
 # 설정 함수
-def setup_logging_color_message_only(file_name):
+def setup_logging_color_message_only(file_name, directory='logs'):
     # prefix 포맷(메시지 제외)
     prefix_fmt = "%(asctime)s %(levelname)s\t[%(name)s]\t"
     root = logging.getLogger()
     root.setLevel(logging.INFO)
 
-    # fmt = "%(asctime)s %(levelname)s\t[%(name)s]\t%(message)s"
     datefmt = "%m/%d/%Y %H:%M:%S"
 
     # 기존 핸들러 제거 (Hydra 등에서 붙였을 수 있음)
     for h in list(root.handlers):
         root.removeHandler(h)
 
+    # 현재 시간으로 서브디렉토리 생성
+    now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    # log_dir = os.path.join(directory, now)
+    log_dir = Path(directory) / now
+    log_dir.mkdir(parents=True, exist_ok=True)
+    log_path = log_dir / file_name
+
     # 파일 핸들러: plain format (타임/레벨/[name]/message 모두 포함)
     file_fmt = "%(asctime)s %(levelname)s\t[%(name)s]\t%(message)s"
-    fh = logging.FileHandler(file_name, mode="w")
+    fh = logging.FileHandler(log_path, mode="w")
     fh.setFormatter(logging.Formatter(file_fmt, datefmt=datefmt))
     root.addHandler(fh)
 

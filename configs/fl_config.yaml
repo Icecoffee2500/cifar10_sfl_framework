@@ -1,4 +1,10 @@
 device: 0
+log_dir: logs
+
+algorithm:
+  # name: fedavg
+  name: fedprox
+  mu: 1
 
 server:
   num_users: 10

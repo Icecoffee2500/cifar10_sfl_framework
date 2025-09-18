@@ -22,7 +22,7 @@ import logging
 import wandb
 
 from models.resnet import ResNet18, ResidualBlock
-from trainers.fl_local_update import FLClient
+from trainers.fl_client import FLClient
 from datasets.fl_dataset import DatasetSplit, dataset_iid, cifar_user_dataset, create_transforms, dirichlet_distribution_dict_users
 from utils.utils import set_seed, AverageMeter, setup_logging_with_color, prRed, prGreen, setup_logging_color_message_only
 from federated_algorithms.fedavg import FedAvg
@@ -30,9 +30,7 @@ from federated_algorithms.fedavg import FedAvg
 
 @hydra.main(version_base=None, config_path="../configs", config_name="fl_config")
 def main(cfg: DictConfig) -> None:
-    # setup_logging(file_name="train_fl_cifar10.log")
-    # setup_logging_with_color(file_name="train_fl_cifar10.log")
-    setup_logging_color_message_only(file_name="train_fl_cifar10.log")
+    setup_logging_color_message_only(file_name="train_fl_cifar10.log", directory=cfg.log_dir)
     logger = logging.getLogger(__name__)
     set_seed()
     if torch.cuda.is_available():
@@ -47,16 +45,19 @@ def main(cfg: DictConfig) -> None:
     frac = cfg.server.frac # 1이면 full participation, 1보다 작으면 partial participation
 
     # wandb setup
-    algorithm = "fl"
+    distributed_method = "fl"
+    algorithm = cfg.algorithm.name
     model_name = "resnet18"
     dataset_name = "cifar10"
     lr = cfg.client.optimizer.lr
     global_epochs = cfg.server.global_epochs
     etc = f"beta={cfg.dataset.heterogeneity.beta}"
     etc += f"_client_num={num_users}"
+    if algorithm == "fedprox":
+        etc += f"_mu={cfg.algorithm.mu}"
 
     project_name = "FL ResNet18 on CIFAR10"
-    exp_name = f"{algorithm}_{model_name}_{dataset_name}_lr{lr}_bs{cfg.client.train.batch_size}_globalep{global_epochs}_localep{cfg.client.train.local_epochs}_{etc}"
+    exp_name = f"{distributed_method}_{algorithm}_{etc}_{model_name}_{dataset_name}_lr{lr}_bs{cfg.client.train.batch_size}_globalep{global_epochs}_localep{cfg.client.train.local_epochs}"
     cfg_dict = OmegaConf.to_container(cfg, resolve=True, throw_on_missing=True)
 
 
@@ -155,7 +156,13 @@ def main(cfg: DictConfig) -> None:
                 # client 선택
                 client = clients[idx]
                 # Training ------------------
-                local_weight, loss_train, acc_train = client.train()
+                if cfg.algorithm.name == "fedavg":
+                    local_weight, loss_train, acc_train = client.train()
+                elif cfg.algorithm.name == "fedprox":
+                    local_weight, loss_train, acc_train = client.train_fedprox(
+                        global_model_weights_dict=model_global.state_dict(),
+                        mu=cfg.algorithm.mu
+                    )
 
                 local_weights.append(copy.deepcopy(local_weight))
 
