@@ -15,6 +15,8 @@ from torchvision import transforms, datasets
 import numpy as np
 import copy
 from pathlib import Path
+import logging
+import wandb
 
 from models.resnet_client_side import ResNet18_client_side
 from models.resnet_server_side import ResNet18_server_side
@@ -23,7 +25,6 @@ from datasets.fl_dataset import dataset_iid
 from trainers.sl_client import Client
 from trainers.sl_server import SLServer
 from utils.utils import set_seed
-import logging
 from utils.utils import setup_logging_color_message_only, prGreen, prRed
 from datasets.fl_dataset import dirichlet_distribution_dict_users
 
@@ -52,6 +53,28 @@ num_users = 10
 epochs = 200
 frac = 1   # participation of clients; if 1 then 100% clients participate in SL
 lr = 0.01
+# beta = 0.1
+beta = 0.5
+
+# wandb setup
+algorithm = "sl"
+model_name = "resnet18"
+dataset_name = "cifar10"
+global_epochs = 200
+etc = f"beta={beta}_client_num={num_users}"
+
+project_name = "SL ResNet18 on CIFAR10"
+exp_name = f"{algorithm}_{model_name}_{dataset_name}_lr{lr}_globalep{global_epochs}_{etc}"
+cfg_dict = {
+    "algorithm": algorithm,
+    "model_name": model_name,
+    "dataset_name": dataset_name,
+    "lr": lr,
+    "beta": beta,
+    "num_users": num_users,
+    "global_epochs": global_epochs,
+    "etc": etc
+}
 
 #=====================================================================================================
 #                           Client-side Model definition
@@ -159,37 +182,43 @@ for idx in range(num_users):
     clients.append(client)
 
 #net_glob_client.train()
-# this epoch is global epoch, also known as rounds
-for iter in range(epochs):
-    m = max(int(frac * num_users), 1)
-    idxs_users = np.random.choice(range(num_users), m, replace = False)
 
-    # Sequential training/testing among clients      
-    for idx in idxs_users:
-        local = clients[idx]
-        # Training ------------------
-        w_client = local.train(net = copy.deepcopy(net_glob_client).to(device))
-              
-        # Testing -------------------
-        local.evaluate(net=copy.deepcopy(net_glob_client).to(device), ell=iter)
-        
-        # copy weight to net_glob_client -- use to update the client-side model of the next client to be trained
-        net_glob_client.load_state_dict(w_client)
-   
-#===================================================================================     
+with wandb.init(project=project_name, config=cfg_dict, name=exp_name) as run:
+    # this epoch is global epoch, also known as rounds
+    for iter in range(epochs):
+        wdb_log_dict = {}
+        m = max(int(frac * num_users), 1)
+        idxs_users = np.random.choice(range(num_users), m, replace = False)
 
-prGreen("Training and Evaluation completed!", logger=logger)    
+        # Sequential training/testing among clients      
+        for idx in idxs_users:
+            local = clients[idx]
+            # Training ------------------
+            w_client = local.train(net = copy.deepcopy(net_glob_client).to(device))
+                
+            # Testing -------------------
+            wdb_log_dict = local.evaluate(net=copy.deepcopy(net_glob_client).to(device), ell=iter)
 
-#===============================================================================
-# Save output data to .excel file (we use for comparision plots)
-# round_process = [i for i in range(1, len(local.server.acc_train_collect)+1)]
+            if wdb_log_dict is not None:
+                wandb.log(wdb_log_dict, step=iter)
+            
+            # copy weight to net_glob_client -- use to update the client-side model of the next client to be trained
+            net_glob_client.load_state_dict(w_client)
+    
+    #===================================================================================     
 
-logger.info(f"loss_train_collect: {server.loss_train_collect}")
-logger.info(f"loss_test_collect: {server.loss_test_collect}")
-logger.info(f"acc_train_collect: {server.acc_train_collect}")
-logger.info(f"acc_test_collect: {server.acc_test_collect}")
+    prGreen("Training and Evaluation completed!", logger=logger)    
 
-prGreen(f"best test acc: {max(server.acc_test_collect)}", logger=logger)
+    #===============================================================================
+    # Save output data to .excel file (we use for comparision plots)
+    # round_process = [i for i in range(1, len(local.server.acc_train_collect)+1)]
+
+    logger.info(f"loss_train_collect: {server.loss_train_collect}")
+    logger.info(f"loss_test_collect: {server.loss_test_collect}")
+    logger.info(f"acc_train_collect: {server.acc_train_collect}")
+    logger.info(f"acc_test_collect: {server.acc_test_collect}")
+
+    prGreen(f"best test acc: {max(server.acc_test_collect)}", logger=logger)
 
 #=============================================================================
 #                         Program Completed

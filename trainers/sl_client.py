@@ -7,7 +7,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-class Client(object):
+class Client:
     def __init__(self, net_client_model, server, idx, lr, device, frac, total_num_users, dataset_train = None, dataset_test = None, idxs = None, idxs_test = None):
         self.idx = idx
         self.device = device
@@ -56,8 +56,8 @@ class Client(object):
                 fx = net(images)
                 
                 # Sending activations to server 
-                self.server.evaluate_server(fx, labels, self.idx, len_batch, ell)
+                wdb_log_dict = self.server.evaluate_server(fx, labels, self.idx, len_batch, ell)
             
             #prRed('Client{} Test => Epoch: {}'.format(self.idx, ell), logger=logger)
             
-        return  
+        return wdb_log_dict
