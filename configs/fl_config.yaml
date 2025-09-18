@@ -22,6 +22,9 @@ client:
 
 
 dataset:
+  heterogeneity:
+    # beta: 0.1
+    beta: 0.5
   train:
     transforms:
       - type: RandomCrop
