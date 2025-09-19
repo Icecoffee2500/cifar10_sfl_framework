@@ -65,10 +65,10 @@ lr = 0.01
 beta = 0.1
 # beta = 0.5
 # mu = 1.0
-# mu = 0.1
+mu = 0.1
 # mu = 0.01
 # mu = 0.001
-mu = 0.0001
+# mu = 0.0001
 
 # wandb setup
 distributed_method = "sfl-v2"
@@ -675,7 +675,7 @@ with wandb.init(project=project_name, config=cfg_dict, name=exp_name) as run:
         for idx in idxs_users:
             local = Client(net_glob_client, idx, lr, device, dataset_train = dataset_train, dataset_test = dataset_test, idxs = dict_users_train[idx], idxs_test = dict_users_test[idx])
             # Training ------------------
-            w_client = local.train(net = copy.deepcopy(net_glob_client).to(device))
+            # w_client = local.train(net = copy.deepcopy(net_glob_client).to(device))
             w_client = local.train_fedprox(net = copy.deepcopy(net_glob_client).to(device), mu=mu)
 
             w_locals_client.append(copy.deepcopy(w_client))
