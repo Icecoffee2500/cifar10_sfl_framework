@@ -53,8 +53,8 @@ prGreen("Start: SFL-V2 ResNet18 on CIFAR10", logger=logger)
 
 # device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 # device = torch.device(f'cuda:1' if torch.cuda.is_available() else 'cpu')
-device = torch.device(f'cuda:2' if torch.cuda.is_available() else 'cpu')
-# device = torch.device(f'cuda:3' if torch.cuda.is_available() else 'cpu')
+# device = torch.device(f'cuda:2' if torch.cuda.is_available() else 'cpu')
+device = torch.device(f'cuda:3' if torch.cuda.is_available() else 'cpu')
 
 #===================================================================
 # No. of users
@@ -67,8 +67,8 @@ beta = 0.1
 # mu = 1.0
 # mu = 0.1
 # mu = 0.01
-mu = 0.001
-# mu = 0.0001
+# mu = 0.001
+mu = 0.0001
 
 # wandb setup
 distributed_method = "sfl-v2"
