@@ -51,8 +51,10 @@ if torch.cuda.is_available():
 # print(f"---------{program}----------")              # this is to identify the program in the slurm outputs files
 prGreen("Start: SFL-V2 ResNet18 on CIFAR10", logger=logger)
 
-# device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-device = torch.device(f'cuda:3' if torch.cuda.is_available() else 'cpu')
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+# device = torch.device(f'cuda:1' if torch.cuda.is_available() else 'cpu')
+# device = torch.device(f'cuda:2' if torch.cuda.is_available() else 'cpu')
+# device = torch.device(f'cuda:3' if torch.cuda.is_available() else 'cpu')
 
 #===================================================================
 # No. of users
@@ -60,17 +62,24 @@ num_users = 10
 epochs = 200
 frac = 1        # participation of clients; if 1 then 100% clients participate in SFLV2
 lr = 0.01
-# beta = 0.1
-beta = 0.5
+beta = 0.1
+# beta = 0.5
+# mu = 1.0
+mu = 0.1
+# mu = 0.01
+# mu = 0.001
+# mu = 0.0001
 
 # wandb setup
-algorithm = "sfl-v2"
+distributed_method = "sfl-v2"
+algorithm = "fedavg"
+algorithm = "fedprox"
 model_name = "resnet18"
 dataset_name = "cifar10"
-etc = f"beta={beta}_client_num={num_users}"
+etc = f"beta={beta}_mu={mu}_client_num={num_users}"
 
 project_name = "SFL-V1 ResNet18 on CIFAR10"
-exp_name = f"{algorithm}_{model_name}_{dataset_name}_lr{lr}_globalep{epochs}_{etc}"
+exp_name = f"{distributed_method}_{algorithm}_{etc}_{model_name}_{dataset_name}_lr{lr}_globalep{epochs}_localep5"
 cfg_dict = {
     "algorithm": algorithm,
     "model_name": model_name,
@@ -149,18 +158,11 @@ net_glob_client = ResNet18_client_side(ResidualBlock)
 #     print("We use", torch.cuda.device_count(), "GPUs")
 #     net_glob_client = nn.DataParallel(
 #         net_glob_client)  # to use the multiple GPUs; later we can change this to CPUs only
-
 net_glob_client.to(device)
-# print(net_glob_client)
-
 
 # =====================================================================================================
 #                           Server-side Model definition
 # =====================================================================================================
-# Model at server side
-
-
-
 class ResNet18_server_side(nn.Module):
     def __init__(self, ResidualBlock, num_classes=100):
         super(ResNet18_server_side, self).__init__()
@@ -462,6 +464,51 @@ class Client(object):
             
             #prRed('Client{} Train => Epoch: {}'.format(self.idx, ell))
            
+        return net.state_dict()
+    
+    def train_fedprox(self, net, mu):
+        global_client_model_weights_dict = net.state_dict()
+        net.train()
+        optimizer_client = torch.optim.SGD(net.parameters(), lr=0.01, momentum=0.9, weight_decay=5e-4)
+        
+        for iter in range(self.local_ep):
+            len_batch = len(self.ldr_train)
+            for batch_idx, (images, labels) in enumerate(self.ldr_train):
+                images, labels = images.to(self.device), labels.to(self.device)
+                optimizer_client.zero_grad()
+                #---------forward prop-------------
+                fx = net(images)
+                client_fx = fx.clone().detach().requires_grad_(True)
+                
+                # Sending activations to server and receiving gradients from server
+                dfx = train_server(client_fx, labels, iter, self.local_ep, self.idx, len_batch)
+                
+                #--------backward prop -------------
+                fx.backward(dfx)
+
+                # ------------------ FedProx ------------------
+                if global_client_model_weights_dict is not None and mu is not None:
+                    for name, local_param in net.named_parameters():
+                        if name not in global_client_model_weights_dict:
+                            logger.warning(f"[no global param] {name}")
+                            continue
+                        global_param = global_client_model_weights_dict[name]
+                        if local_param.shape != global_param.shape:
+                            logger.warning(f"[mismatch] {name}: local {tuple(local_param.shape)} vs global {tuple(global_param.shape)}")
+                            continue
+                        # FedProx 적용
+                        if local_param.grad is None:
+                            local_param.grad = torch.zeros_like(local_param)
+                        with torch.no_grad():
+                            delta = mu * (global_param.detach() - local_param.detach())
+                            local_param.grad.add_(delta)
+
+                # ---------------------------------------------
+                optimizer_client.step()
+                            
+            
+            #prRed('Client{} Train => Epoch: {}'.format(self.idx, ell))
+           
         return net.state_dict() 
     
     def evaluate(self, net, ell):
@@ -629,6 +676,8 @@ with wandb.init(project=project_name, config=cfg_dict, name=exp_name) as run:
             local = Client(net_glob_client, idx, lr, device, dataset_train = dataset_train, dataset_test = dataset_test, idxs = dict_users_train[idx], idxs_test = dict_users_test[idx])
             # Training ------------------
             w_client = local.train(net = copy.deepcopy(net_glob_client).to(device))
+            w_client = local.train_fedprox(net = copy.deepcopy(net_glob_client).to(device), mu=mu)
+
             w_locals_client.append(copy.deepcopy(w_client))
             
             # Testing -------------------
