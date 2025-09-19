@@ -67,8 +67,8 @@ beta = 0.1
 # mu = 1.0
 # mu = 0.1
 # mu = 0.01
-mu = 0.001
-# mu = 0.0001
+# mu = 0.001
+mu = 0.0001
 
 # wandb setup
 distributed_method = "sfl-v2"
