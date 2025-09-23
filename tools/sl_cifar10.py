@@ -18,15 +18,15 @@ from pathlib import Path
 import logging
 import wandb
 
-from models.resnet_client_side import ResNet18_client_side
-from models.resnet_server_side import ResNet18_server_side
-from models.residual_block import ResidualBlock
-from datasets.fl_dataset import dataset_iid
-from trainers.sl_client import Client
-from trainers.sl_server import SLServer
-from utils.utils import set_seed
-from utils.utils import setup_logging_color_message_only, prGreen, prRed
-from datasets.fl_dataset import dirichlet_distribution_dict_users
+from src.models.resnet_client_side import ResNet18_client_side
+from src.models.resnet_server_side import ResNet18_server_side
+from src.models.residual_block import ResidualBlock
+from src.datasets.fl_dataset import dataset_iid
+from src.trainers.sl_client import Client
+from src.trainers.sl_server import SLServer
+from src.utils.utils import set_seed
+from src.utils.utils import setup_logging_color_message_only, prGreen, prRed
+from src.datasets.fl_dataset import dirichlet_distribution_dict_users
 
 
 setup_logging_color_message_only(file_name="train_sl_cifar10.log")
@@ -38,14 +38,10 @@ if torch.cuda.is_available():
     logger.info(f"GPU: {torch.cuda.get_device_name(0)}")
 
 #===================================================================  
-# program = "SL ResNet18 on CIFAR10"
-# print(f"---------{program}----------")              # this is to identify the program in the slurm outputs files
 prGreen("Start: SL ResNet18 on CIFAR10", logger=logger)
 
 # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 device = torch.device(f'cuda:1' if torch.cuda.is_available() else 'cpu')
-
-
 #===================================================================  
 # No. of users
 num_users = 10

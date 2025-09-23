@@ -28,8 +28,8 @@ import copy
 import logging
 import wandb
 
-from utils.utils import set_seed, setup_logging_color_message_only, prGreen, prRed
-from datasets.fl_dataset import dirichlet_distribution_dict_users
+from src.utils.utils import set_seed, setup_logging_color_message_only, prGreen, prRed
+from src.datasets.fl_dataset import dirichlet_distribution_dict_users
 
 
 # SEED = 1234
@@ -681,7 +681,7 @@ with wandb.init(project=project_name, config=cfg_dict, name=exp_name) as run:
             w_locals_client.append(copy.deepcopy(w_client))
             
             # Testing -------------------
-            wdb_log_dict = local.evaluate(net = copy.deepcopy(net_glob_client).to(device), ell= iter)
+            wdb_log_dict = local.evaluate(net = copy.deepcopy(net_glob_client).to(device), ell=iter)
             
             if wdb_log_dict is not None:
                 wandb.log(wdb_log_dict, step=iter)

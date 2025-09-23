@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import DataLoader
-from datasets.fl_dataset import DatasetSplit
-from trainers.sl_server import SLServer
+from src.datasets.fl_dataset import DatasetSplit
+from src.trainers.sl_server import SLServer
 from torch import nn
 import logging
 
