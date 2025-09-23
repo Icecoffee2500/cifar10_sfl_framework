@@ -1,6 +1,6 @@
 import torch
-from utils.utils import calculate_accuracy
-from utils.utils import prRed, prGreen
+from src.utils.utils import calculate_accuracy
+from src.utils.utils import prRed, prGreen
 import logging
 
 logger = logging.getLogger(__name__)

@@ -1,8 +1,8 @@
 import torch
 from torch import nn
 from torch.utils.data import DataLoader, Dataset
-from datasets.fl_dataset import DatasetSplit
-from utils.utils import calculate_accuracy, prRed, prGreen, AverageMeter
+from src.datasets.fl_dataset import DatasetSplit
+from src.utils.utils import calculate_accuracy, prRed, prGreen, AverageMeter
 import logging
 logger = logging.getLogger(__name__)
 

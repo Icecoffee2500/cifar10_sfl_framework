@@ -21,11 +21,11 @@ import yaml
 import logging
 import wandb
 
-from models.resnet import ResNet18, ResidualBlock
-from trainers.fl_client import FLClient
-from datasets.fl_dataset import DatasetSplit, dataset_iid, cifar_user_dataset, create_transforms, dirichlet_distribution_dict_users
-from utils.utils import set_seed, AverageMeter, setup_logging_with_color, prRed, prGreen, setup_logging_color_message_only
-from federated_algorithms.fedavg import FedAvg
+from src.models.resnet import ResNet18, ResidualBlock
+from src.trainers.fl_client import FLClient
+from src.datasets.fl_dataset import DatasetSplit, dataset_iid, cifar_user_dataset, create_transforms, dirichlet_distribution_dict_users
+from src.utils.utils import set_seed, AverageMeter, setup_logging_with_color, prRed, prGreen, setup_logging_color_message_only
+from src.federated_algorithms.fedavg import FedAvg
 
 
 @hydra.main(version_base=None, config_path="../configs", config_name="fl_config")
@@ -80,10 +80,7 @@ def main(cfg: DictConfig) -> None:
     dict_users_test = dataset_iid(dataset_test, num_users)
 
     # -----------------------------------------------
-    # with open('beta=0.1.pkl', 'rb') as file:
-    #     dict_users=pickle.load(file)
     # dict_users=cifar_user_dataset(dataset_train,num_users,0)
-    
     # cifar10_dirichlet_0_1 = Path('datasets/cifar0.1.txt')
     # dict_users_train = eval(cifar10_dirichlet_0_1.read_text())
     # dict_users_test = dataset_iid(dataset_test, num_users)
@@ -95,7 +92,6 @@ def main(cfg: DictConfig) -> None:
         total_items_count += len(dict_users_train[idx])
     logger.info(f"total_items_count: {total_items_count}")
     
-
 
     # Model definition ==========================================================
     model_global = ResNet18(ResidualBlock)

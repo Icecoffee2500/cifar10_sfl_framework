@@ -29,8 +29,8 @@ import os
 import copy
 import logging
 
-from utils.utils import set_seed, setup_logging_color_message_only, prGreen, prRed
-from datasets.fl_dataset import dirichlet_distribution_dict_users
+from src.utils.utils import set_seed, setup_logging_color_message_only, prGreen, prRed
+from src.datasets.fl_dataset import dirichlet_distribution_dict_users
 
 
 # SEED = 1234
