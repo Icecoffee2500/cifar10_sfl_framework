@@ -68,8 +68,8 @@ class FedProxClient(FLClientBase):
             self.epoch_loss.update(self.batch_loss.avg)
             self.epoch_acc.update(self.batch_acc.avg)
 
-            params_list = [p.detach().clone() for p in self.model.state_dict().values()]
-            res = params_list, self.dataset_length
+        params_list = [p.detach().clone() for p in self.model.state_dict().values()]
+        res = params_list, self.dataset_length
         
         return res, self.epoch_loss.avg, self.epoch_acc.avg
 

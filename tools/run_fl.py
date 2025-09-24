@@ -10,9 +10,11 @@ import wandb
 from src.models.resnet import ResNet18, ResidualBlock
 from src.trainers.fl_client_base import FLClientBase
 from src.trainers.fl_client_fedprox import FedProxClient
+from src.trainers.fl_client_scaffold import ScaffoldClient
 from src.datasets.fl_dataset import dataset_iid, create_transforms, dirichlet_distribution_dict_users
 from src.utils.utils import set_seed, prRed, prGreen, setup_logging_color_message_only
-from src.trainers.fl_server_base import FLServerBase
+from src.trainers.fl_server_base import FLBaseServer
+from src.trainers.fl_server_scaffold import FLServerScaffold
 
 
 @hydra.main(version_base=None, config_path="../configs", config_name="fl_config")
@@ -90,7 +92,7 @@ def main(cfg: DictConfig) -> None:
                     cfg=cfg.client,
                     idx=idx,
                     device=device,
-                    model=copy.deepcopy(model).to(device),
+                    model=copy.deepcopy(model),
                     dataset_train=dataset_train,
                     dataset_test=dataset_test,
                     dataset_split_dict_train=dict_users_train[idx],
@@ -101,7 +103,18 @@ def main(cfg: DictConfig) -> None:
                     cfg=cfg.client,
                     idx=idx,
                     device=device,
-                    model=copy.deepcopy(model).to(device),
+                    model=copy.deepcopy(model),
+                    dataset_train=dataset_train,
+                    dataset_test=dataset_test,
+                    dataset_split_dict_train=dict_users_train[idx],
+                    dataset_split_dict_test=dict_users_test[idx]
+                )
+            elif cfg.algorithm.name == "scaffold":
+                client = ScaffoldClient(
+                    cfg=cfg.client,
+                    idx=idx,
+                    device=device,
+                    model=copy.deepcopy(model),
                     dataset_train=dataset_train,
                     dataset_test=dataset_test,
                     dataset_split_dict_train=dict_users_train[idx],
@@ -111,14 +124,25 @@ def main(cfg: DictConfig) -> None:
                 raise ValueError(f"Invalid algorithm: {cfg.algorithm.name}")
             clients.append(client)
         
-        server = FLServerBase(
-            cfg=cfg.server,
-            logger=logger,
-            wandb=run,
-            device=device,
-            clients=clients,
-            global_params_dict=model.state_dict(keep_vars=True)
-        )
+        if cfg.algorithm.name == "scaffold":
+            server = FLServerScaffold(
+                cfg=cfg.server,
+                logger=logger,
+                wandb=run,
+                device=device,
+                clients=clients,
+                global_params_dict=model.state_dict(keep_vars=True),
+                global_parameters=model.parameters()
+            )
+        else:
+            server = FLBaseServer(
+                cfg=cfg.server,
+                logger=logger,
+                wandb=run,
+                device=device,
+                clients=clients,
+                global_params_dict=model.state_dict(keep_vars=True)
+            )
         
         # Training/Testing simulation ==========================================================
         server.train()

@@ -5,7 +5,7 @@ from collections import OrderedDict
 from src.trainers.fl_client_base import FLClientBase
 from src.utils.utils import prGreen, prRed, clone_parameters, metrics_log
 
-class FLServerBase:
+class FLBaseServer:
     def __init__(self, cfg, logger, wandb, device, clients: list[FLClientBase], global_params_dict: OrderedDict[str : torch.Tensor]):
         self.cfg = cfg
         self.logger = logger

@@ -41,9 +41,11 @@ class FLClientBase(object):
         self.local_epochs = cfg.train.local_epochs
         self.loss_func = nn.CrossEntropyLoss()
         self.model = model
+        self.model.to(device)
+        self.local_lr = cfg.optimizer.lr
         self.optimizer = torch.optim.SGD(
             self.model.parameters(),
-            lr=cfg.optimizer.lr,
+            lr=self.local_lr,
             momentum=cfg.optimizer.momentum,
             weight_decay=cfg.optimizer.weight_decay
         )
@@ -90,8 +92,8 @@ class FLClientBase(object):
             self.epoch_loss.update(self.batch_loss.avg)
             self.epoch_acc.update(self.batch_acc.avg)
 
-            params_list = [p.detach().clone() for p in self.model.state_dict().values()]
-            res = params_list, self.dataset_length
+        params_list = [p.detach().clone() for p in self.model.state_dict().values()]
+        res = params_list, self.dataset_length
         
         return res, self.epoch_loss.avg, self.epoch_acc.avg
     
@@ -131,7 +133,11 @@ class FLClientBase(object):
 
     def set_parameters(self, model_params: OrderedDict):
         self.model.load_state_dict(model_params, strict=False)
-        if self.client_id in self.untrainable_params.keys():
+        # if self.client_id in self.untrainable_params.keys():
+        #     self.model.load_state_dict(
+        #         self.untrainable_params[self.client_id], strict=False
+        #     )
+        if self.untrainable_params != {}:
             self.model.load_state_dict(
-                self.untrainable_params[self.client_id], strict=False
+                self.untrainable_params, strict=False
             )
