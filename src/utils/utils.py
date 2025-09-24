@@ -6,6 +6,9 @@ import logging
 import sys
 import datetime
 from pathlib import Path
+from typing import Union
+from collections import OrderedDict
+from functools import wraps
 
 logger = logging.getLogger(__name__)
 
@@ -228,3 +231,62 @@ def prGreen(msg, logger=None):
     if logger is None:
         logger = logging.getLogger(__name__)
     logger.info(msg, extra={"color": "green"})
+
+def clone_parameters(
+    src: Union[OrderedDict[str, torch.Tensor], torch.nn.Module]
+) -> OrderedDict[str, torch.Tensor]:
+    if isinstance(src, OrderedDict):
+        return OrderedDict(
+            {
+                name: param.clone().detach().requires_grad_(param.requires_grad)
+                for name, param in src.items()
+            }
+        )
+    if isinstance(src, torch.nn.Module):
+        return OrderedDict(
+            {
+                name: param.clone().detach().requires_grad_(param.requires_grad)
+                for name, param in src.state_dict(keep_vars=True).items()
+            }
+        )
+
+def metrics_log(func):
+    @wraps(func)
+    def wrapper(self, global_epoch, *args, **kwargs):
+        client_train_losses = AverageMeter()
+        client_train_accuracies = AverageMeter()
+        client_test_losses = AverageMeter()
+        client_test_accuracies = AverageMeter()
+
+        wdb_log_dict = {}
+
+        func(self, client_train_losses, client_train_accuracies, client_test_losses, client_test_accuracies, *args, **kwargs)
+
+        # Save Train/Test accuracy ==========================================================
+        acc_avg_train = client_train_accuracies.avg
+        self.global_acc_train_collect.append(acc_avg_train)
+        wdb_log_dict[f"train/acc_avg"] = acc_avg_train # wandb log
+
+        acc_avg_test = client_test_accuracies.avg
+        self.global_acc_test_collect.append(acc_avg_test)
+        wdb_log_dict[f"test/acc_avg"] = acc_avg_test # wandb log
+
+        # Save Train/Test loss ==========================================================
+        loss_avg_train = client_train_losses.avg
+        self.global_loss_train_collect.append(loss_avg_train)
+        wdb_log_dict[f"train/loss_avg"] = loss_avg_train # wandb log
+
+        loss_avg_test = client_test_losses.avg
+        self.global_loss_test_collect.append(loss_avg_test)
+        wdb_log_dict[f"test/loss_avg"] = loss_avg_test # wandb log
+        
+        
+        # Print results ==========================================================
+        prGreen('------------------- SERVER ----------------------------------------------', logger=self.logger)
+        prGreen(f"Train: Round {global_epoch:3d}, Avg Accuracy {acc_avg_train:.3f} | Avg Loss {loss_avg_train:.3f}", logger=self.logger)
+        prGreen(f"Test:  Round {global_epoch:3d}, Avg Accuracy {acc_avg_test:.3f} | Avg Loss {loss_avg_test:.3f}", logger=self.logger)
+        prGreen('-------------------------------------------------------------------------', logger=self.logger)
+
+        self.wandb.log(wdb_log_dict, step=global_epoch)
+
+    return wrapper

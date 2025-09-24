@@ -8,8 +8,9 @@ algorithm:
 
 server:
   num_users: 10
-  frac: 1
+  participation_rate: 1
   global_epochs: 200 # rounds
+  save_interval: 10
 
 client:
   train:
