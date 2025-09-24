@@ -1,21 +1,18 @@
 import torch
-from torch import nn
-from torchvision import transforms, datasets
+from torchvision import datasets
 import numpy as np
 import copy
-from pathlib import Path
 import hydra
 from omegaconf import DictConfig, OmegaConf
-import yaml
 import logging
 import wandb
 
 from src.models.resnet import ResNet18, ResidualBlock
-from src.trainers.fl_client_good import FLClient
-from src.datasets.fl_dataset import DatasetSplit, dataset_iid, cifar_user_dataset, create_transforms, dirichlet_distribution_dict_users
-from src.utils.utils import set_seed, AverageMeter, setup_logging_with_color, prRed, prGreen, setup_logging_color_message_only
-from src.federated_algorithms.fedavg import FedAvg
-from src.trainers.fl_server import FLServerBase
+from src.trainers.fl_client_base import FLClientBase
+from src.trainers.fl_client_fedprox import FedProxClient
+from src.datasets.fl_dataset import dataset_iid, create_transforms, dirichlet_distribution_dict_users
+from src.utils.utils import set_seed, prRed, prGreen, setup_logging_color_message_only
+from src.trainers.fl_server_base import FLServerBase
 
 
 @hydra.main(version_base=None, config_path="../configs", config_name="fl_config")
@@ -32,22 +29,20 @@ def main(cfg: DictConfig) -> None:
     device = torch.device(f'cuda:{cfg.device}' if torch.cuda.is_available() else 'cpu')
     num_users = cfg.server.num_users
     global_epochs = cfg.server.global_epochs
-    participation_rate = cfg.server.participation_rate # 1이면 full participation, 1보다 작으면 partial participation
 
     # wandb setup
     distributed_method = "fl"
     algorithm = cfg.algorithm.name
     model_name = "resnet18"
     dataset_name = "cifar10"
-    lr = cfg.client.optimizer.lr
-    global_epochs = cfg.server.global_epochs
+    
     etc = f"beta={cfg.dataset.heterogeneity.beta}"
     etc += f"_client_num={num_users}"
     if algorithm == "fedprox":
-        etc += f"_mu={cfg.algorithm.mu}"
+        etc += f"_mu={cfg.client.train.hyperparameter.mu}"
 
     project_name = "FL ResNet18 on CIFAR10"
-    exp_name = f"{distributed_method}_{algorithm}_{etc}_{model_name}_{dataset_name}_lr{lr}_bs{cfg.client.train.batch_size}_globalep{global_epochs}_localep{cfg.client.train.local_epochs}"
+    exp_name = f"{distributed_method}_{algorithm}_{etc}_{model_name}_{dataset_name}_lr{cfg.client.optimizer.lr}_bs{cfg.client.train.batch_size}_globalep{global_epochs}_localep{cfg.client.train.local_epochs}"
     cfg_dict = OmegaConf.to_container(cfg, resolve=True, throw_on_missing=True)
 
     
@@ -90,16 +85,30 @@ def main(cfg: DictConfig) -> None:
         # Client collection ==========================================================
         clients = []
         for idx in range(num_users):
-            client = FLClient(
-                cfg=cfg.client,
-                idx=idx,
-                device=device,
-                model=copy.deepcopy(model).to(device),
-                dataset_train=dataset_train,
-                dataset_test=dataset_test,
-                dataset_split_dict_train=dict_users_train[idx],
-                dataset_split_dict_test=dict_users_test[idx]
-            )
+            if cfg.algorithm.name == "fedavg":
+                client = FLClientBase(
+                    cfg=cfg.client,
+                    idx=idx,
+                    device=device,
+                    model=copy.deepcopy(model).to(device),
+                    dataset_train=dataset_train,
+                    dataset_test=dataset_test,
+                    dataset_split_dict_train=dict_users_train[idx],
+                    dataset_split_dict_test=dict_users_test[idx]
+                )
+            elif cfg.algorithm.name == "fedprox":
+                client = FedProxClient(
+                    cfg=cfg.client,
+                    idx=idx,
+                    device=device,
+                    model=copy.deepcopy(model).to(device),
+                    dataset_train=dataset_train,
+                    dataset_test=dataset_test,
+                    dataset_split_dict_train=dict_users_train[idx],
+                    dataset_split_dict_test=dict_users_test[idx]
+                )
+            else:
+                raise ValueError(f"Invalid algorithm: {cfg.algorithm.name}")
             clients.append(client)
         
         server = FLServerBase(

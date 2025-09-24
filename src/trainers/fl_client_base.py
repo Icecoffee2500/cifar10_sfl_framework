@@ -11,7 +11,7 @@ from src.utils.utils import calculate_accuracy, prRed, prGreen, AverageMeter
 #TODO: client는 cfg를 받지 않도록 하기.
 
 # Client-side functions associated with Training and Testing
-class FLClient(object):
+class FLClientBase(object):
     def __init__(
         self,
         cfg,

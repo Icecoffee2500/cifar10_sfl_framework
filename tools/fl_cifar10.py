@@ -22,7 +22,7 @@ import logging
 import wandb
 
 from src.models.resnet import ResNet18, ResidualBlock
-from src.trainers.fl_client import FLClient
+from src.trainers.fl_client_legacy import FLClient
 from src.datasets.fl_dataset import DatasetSplit, dataset_iid, cifar_user_dataset, create_transforms, dirichlet_distribution_dict_users
 from src.utils.utils import set_seed, AverageMeter, setup_logging_with_color, prRed, prGreen, setup_logging_color_message_only
 from src.federated_algorithms.fedavg import FedAvg
@@ -54,7 +54,7 @@ def main(cfg: DictConfig) -> None:
     etc = f"beta={cfg.dataset.heterogeneity.beta}"
     etc += f"_client_num={num_users}"
     if algorithm == "fedprox":
-        etc += f"_mu={cfg.algorithm.mu}"
+        etc += f"_mu={cfg.client.train.hyperparameter.mu}"
 
     project_name = "FL ResNet18 on CIFAR10"
     exp_name = f"{distributed_method}_{algorithm}_{etc}_{model_name}_{dataset_name}_lr{lr}_bs{cfg.client.train.batch_size}_globalep{global_epochs}_localep{cfg.client.train.local_epochs}"

@@ -1,13 +1,12 @@
 import torch
-from src.trainers.fl_client import FLClient
-from src.utils.utils import AverageMeter
 import numpy as np
-import copy
 from collections import OrderedDict
+
+from src.trainers.fl_client_base import FLClientBase
 from src.utils.utils import prGreen, prRed, clone_parameters, metrics_log
 
 class FLServerBase:
-    def __init__(self, cfg, logger, wandb, device, clients: list[FLClient], global_params_dict: OrderedDict[str : torch.Tensor]):
+    def __init__(self, cfg, logger, wandb, device, clients: list[FLClientBase], global_params_dict: OrderedDict[str : torch.Tensor]):
         self.cfg = cfg
         self.logger = logger
         self.wandb = wandb

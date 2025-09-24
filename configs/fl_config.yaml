@@ -4,7 +4,6 @@ log_dir: logs
 algorithm:
   # name: fedavg
   name: fedprox
-  mu: 1
 
 server:
   num_users: 10
@@ -17,6 +16,8 @@ client:
     local_epochs: 5
     batch_size: 128
     shuffle: True
+    hyperparameter:
+      mu: 1
   test:
     batch_size: 100
     shuffle: True
