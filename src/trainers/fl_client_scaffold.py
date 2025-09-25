@@ -6,6 +6,16 @@ logger = logging.getLogger(__name__)
 
 from src.utils.utils import calculate_accuracy, prRed
 
+torch.autograd.set_detect_anomaly(True)
+
+
+def detect_nan_inf(prefix, tensors):
+    for name, t in tensors.items():
+        if not torch.isfinite(t).all():
+            print(f"[{prefix}] NON-FINITE: {name}: min {t.min().item() if t.numel() else 'NA'}, max {t.max().item() if t.numel() else 'NA'} device {t.device}")
+            return True
+    return False
+
 class ScaffoldClient(FLClientBase):
     def __init__(
         self,
@@ -41,11 +51,14 @@ class ScaffoldClient(FLClientBase):
                 self.c_diff.append(c_g - c_l)
         # -------------------------------------------
 
-        for local_epoch in range(self.local_epochs):
+        update_count = 0
+        # for local_epoch in range(self.local_epochs):
+        for local_epoch in range(1):
             self.batch_loss.reset()
             self.batch_acc.reset()
             
             for batch_idx, (images, labels) in enumerate(self.train_loader):
+                update_count += 1
                 images, labels = images.to(self.device), labels.to(self.device)
                 self.optimizer.zero_grad()
                 #---------forward prop-------------
@@ -62,7 +75,10 @@ class ScaffoldClient(FLClientBase):
 
                 # SCAFFOLD 적용 ------------------------------
                 with torch.no_grad():
-                    for param, c_d in zip(self.model.parameters(), self.c_diff):
+                    # for param, c_d in zip(self.model.parameters(), self.c_diff):
+                    for param, c_d in zip(self.model.state_dict().values(), self.c_diff):
+                        if not param.requires_grad:
+                            continue
                         param.grad.add_(c_d.detach())
                 # -------------------------------------------
                 self.optimizer.step()
@@ -82,19 +98,24 @@ class ScaffoldClient(FLClientBase):
             )
 
             if self.c_local == []: # c_local을 초기화.
-                self.c_local = [torch.zeros_like(param, device=self.device) for param in self.model.parameters()]
+                # self.c_local = [torch.zeros_like(param, device=self.device) for param in self.model.parameters()]
+                self.c_local = [torch.zeros_like(param, device=self.device) for param in self.model.state_dict().values()]
 
             y_delta = []
             c_plus = []
             c_delta = []
 
             # compute y_delta (difference of model before and after training)
-            # y_delta는 모델 weight의 (after - before)
-            for param_l, param_g in zip(self.model.parameters(), trainable_parameters):
-                y_delta.append(param_l - param_g)
 
+            # for param_l, param_g in zip(self.model.parameters(), trainable_parameters):
+            #     y_delta.append(param_l - param_g)
+            for param_l, param_g in zip(self.model.state_dict().values(), global_params.values()):
+                y_delta.append(param_l - param_g)
+            
             # compute c_plus # Option II version
-            coef = 1 / (self.local_epochs * self.local_lr)
+            # coef = 1 / (self.local_epochs * self.local_lr)
+            coef = 1 / (update_count * self.local_lr)
+            
             for c_l, c_g, diff in zip(self.c_local, c_global, y_delta):
                 c_plus.append(c_l - c_g - coef * diff)
 
@@ -104,10 +125,11 @@ class ScaffoldClient(FLClientBase):
 
             self.c_local = c_plus
 
-            for name, param in self.model.state_dict(keep_vars=True).items():
-                if not param.requires_grad:
-                    self.untrainable_params[name] = param.clone()
+            # for name, param in self.model.state_dict(keep_vars=True).items():
+            #     if not param.requires_grad:
+            #         self.untrainable_params[name] = param.clone()
         
-        res = (y_delta, c_delta)
+        # res = (y_delta, c_delta)
+        res = (y_delta, self.dataset_length, c_delta)
         # -------------------------------------------
         return res, self.epoch_loss.avg, self.epoch_acc.avg

@@ -26,6 +26,8 @@ class FLClientBase(object):
         self.client_id = idx
         self.device = device
         self.dataset_length = len(dataset_split_dict_train)
+        self.train_dataset = DatasetSplit(dataset_train, dataset_split_dict_train)
+        self.train_dataset_indices = dataset_split_dict_train
 
         self.train_loader = DataLoader(
             dataset=DatasetSplit(dataset_train, dataset_split_dict_train),
@@ -137,7 +139,7 @@ class FLClientBase(object):
         #     self.model.load_state_dict(
         #         self.untrainable_params[self.client_id], strict=False
         #     )
-        if self.untrainable_params != {}:
-            self.model.load_state_dict(
-                self.untrainable_params, strict=False
-            )
+        # if self.untrainable_params != {}:
+        #     self.model.load_state_dict(
+        #         self.untrainable_params, strict=False
+        #     )
