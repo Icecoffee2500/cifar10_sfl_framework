@@ -52,8 +52,8 @@ class ScaffoldClient(FLClientBase):
         # -------------------------------------------
 
         update_count = 0
-        # for local_epoch in range(self.local_epochs):
-        for local_epoch in range(1):
+        for local_epoch in range(self.local_epochs):
+        # for local_epoch in range(1):
             self.batch_loss.reset()
             self.batch_acc.reset()
             
